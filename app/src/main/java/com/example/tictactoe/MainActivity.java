@@ -4,7 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+
+
 public class MainActivity extends AppCompatActivity {
+
+    /**
+    *   I'm just chucking variables in atm
+    */
+    int boardsize;
+
+    int winCond;
+
+    int playermarker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
