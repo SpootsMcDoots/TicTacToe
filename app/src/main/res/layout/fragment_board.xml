@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BoardFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/board3x3"
+        android:layout_width="325dp"
+        android:layout_height="325dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        >
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/h_boardGL1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3333334"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/h_boardGL2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6666667" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/v_boardGL1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3333334"/>
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/pink"
+            app:layout_constraintStart_toStartOf="@id/v_boardGL1"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/v_boardGL2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6666667"/>
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/pink"
+            app:layout_constraintStart_toStartOf="@id/v_boardGL2"/>
+
+
+        <Button
+            android:id="@+id/newgame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:backgroundTint="@color/blue"
+            android:text="New Game"
+            android:textColor="@color/black"
+
+            app:layout_constraintBottom_toBottomOf="@id/menuGL1"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <Button
+            android:id="@+id/settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:backgroundTint="@color/blue"
+            android:text="Settings"
+            android:textColor="@color/black"
+
+            app:layout_constraintTop_toTopOf="@id/menuGL1"
+            app:layout_constraintBottom_toBottomOf="@id/menuGL2"/>
+
+        <Button
+            android:id="@+id/profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:backgroundTint="@color/blue"
+            android:text="Profile"
+            android:textColor="@color/black"
+
+            app:layout_constraintTop_toTopOf="@id/menuGL2"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
