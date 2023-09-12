@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".BoardFragment">
 
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/board3x3"
         android:layout_width="325dp"
