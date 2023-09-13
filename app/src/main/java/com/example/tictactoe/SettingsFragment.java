@@ -85,19 +85,16 @@ public class SettingsFragment extends Fragment {
             @Override
             //Monitor for changes, if the buttons are pressed, change the drawable to reflect that to the user
             public void onChanged(Integer integer) {
+                size3.setBackgroundResource(R.drawable.default_button);
+                size4.setBackgroundResource(R.drawable.default_button);
+                size5.setBackgroundResource(R.drawable.default_button);
                 if (mainActivityDataViewModel.getBoardSize() == 3) {
                     size3.setBackgroundResource(R.drawable.default_button_pressed);
-                    size4.setBackgroundResource(R.drawable.default_button);
-                    size5.setBackgroundResource(R.drawable.default_button);
                 }
                 if (mainActivityDataViewModel.getBoardSize() == 4) {
-                    size3.setBackgroundResource(R.drawable.default_button);
                     size4.setBackgroundResource(R.drawable.default_button_pressed);
-                    size5.setBackgroundResource(R.drawable.default_button);
                 }
                 if (mainActivityDataViewModel.getBoardSize() == 5) {
-                    size3.setBackgroundResource(R.drawable.default_button);
-                    size4.setBackgroundResource(R.drawable.default_button);
                     size5.setBackgroundResource(R.drawable.default_button_pressed);
 
                 }
