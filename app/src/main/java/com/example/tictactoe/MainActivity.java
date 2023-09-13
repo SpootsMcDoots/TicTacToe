@@ -13,22 +13,11 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Fragment Declaration
-    MenuFragment menuFragment = new MenuFragment();
-    SettingsFragment settingsFragment = new SettingsFragment();
-    /**
-    *   I'm just chucking variables in atm
-    */
-    int boardsize;
-
-    int winCond;
-
-    int playermarker;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         loadMenuFragment();
         NavigationData mainActivityDataViewModel = new ViewModelProvider(this).get(NavigationData.class);
         mainActivityDataViewModel.menuClicked.observe(this, new Observer<Integer>() {

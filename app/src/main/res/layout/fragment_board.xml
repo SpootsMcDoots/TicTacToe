@@ -66,22 +66,6 @@
             android:background="@color/pink"
             app:layout_constraintStart_toStartOf="@id/v_boardGL2"/>
 
-        <Button
-            android:id="@+id/tl"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-
-            android:layout_margin="4dp"
-            android:textColor="@color/black"
-            android:background="@drawable/shapes"
-            app:backgroundTint="@color/blue"
-
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/h_boardGL1"
-            app:layout_constraintEnd_toEndOf="@id/v_boardGL1"
-            app:layout_constraintStart_toStartOf="parent"
-            />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
