@@ -1,12 +1,10 @@
 package com.example.tictactoe;
 
-import android.view.View;
-
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NavigationData extends ViewModel {
+public class AppData extends ViewModel {
     public MutableLiveData<Integer> menuClicked;
 
     //Settings Menu Data
@@ -14,7 +12,7 @@ public class NavigationData extends ViewModel {
     public MutableLiveData<Integer> winCon;
 
     //Initialise to defaults
-    public NavigationData() {
+    public AppData() {
         menuClicked = new MediatorLiveData<Integer>();
         menuClicked.setValue(0);
 

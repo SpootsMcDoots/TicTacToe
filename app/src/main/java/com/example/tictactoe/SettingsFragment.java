@@ -62,7 +62,7 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
-        NavigationData mainActivityDataViewModel = new ViewModelProvider(getActivity()).get(NavigationData.class);
+        AppData mainActivityDataViewModel = new ViewModelProvider(getActivity()).get(AppData.class);
 
         Button backButton = view.findViewById(R.id.back);
 

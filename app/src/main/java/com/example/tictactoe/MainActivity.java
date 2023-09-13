@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loadMenuFragment();
-        NavigationData mainActivityDataViewModel = new ViewModelProvider(this).get(NavigationData.class);
+        AppData mainActivityDataViewModel = new ViewModelProvider(this).get(AppData.class);
         mainActivityDataViewModel.menuClicked.observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {

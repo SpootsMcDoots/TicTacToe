@@ -61,7 +61,7 @@ public class MenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
-        NavigationData mainActivityDataViewModel = new ViewModelProvider(getActivity()).get(NavigationData.class);
+        AppData mainActivityDataViewModel = new ViewModelProvider(getActivity()).get(AppData.class);
 
         Button openBoard = view.findViewById(R.id.newgame);
         Button openSettings = view.findViewById(R.id.settings);
