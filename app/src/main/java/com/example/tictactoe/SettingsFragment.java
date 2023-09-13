@@ -66,6 +66,7 @@ public class SettingsFragment extends Fragment {
 
         Button backButton = view.findViewById(R.id.back);
 
+        //Declare buttons and set the drawable
         Button size3 = view.findViewById(R.id.size3x3);
         Button size4 = view.findViewById(R.id.size4x4);
         Button size5 = view.findViewById(R.id.size5x5);
@@ -82,6 +83,7 @@ public class SettingsFragment extends Fragment {
 
         mainActivityDataViewModel.boardSize.observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
+            //Monitor for changes, if the buttons are pressed, change the drawable to reflect that to the user
             public void onChanged(Integer integer) {
                 if (mainActivityDataViewModel.getBoardSize() == 3) {
                     size3.setBackgroundResource(R.drawable.default_button_pressed);

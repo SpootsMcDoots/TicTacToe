@@ -13,6 +13,7 @@ public class NavigationData extends ViewModel {
     public MutableLiveData<Integer> boardSize;
     public MutableLiveData<Integer> winCon;
 
+    //Initialise to defaults
     public NavigationData() {
         menuClicked = new MediatorLiveData<Integer>();
         menuClicked.setValue(0);
@@ -24,6 +25,7 @@ public class NavigationData extends ViewModel {
         winCon.setValue(3);
     }
 
+    //Getters and setters
     public int getMenuClicked() {
         return menuClicked.getValue();
     }

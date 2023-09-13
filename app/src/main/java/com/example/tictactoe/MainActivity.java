@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     MenuFragment menuFragment = new MenuFragment();
     SettingsFragment settingsFragment = new SettingsFragment();
     BoardFragment boardFragment = new BoardFragment();
+    ProfileFragment profileFragment = new ProfileFragment();
     /**
     *   I'm just chucking variables in atm
     */
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (mainActivityDataViewModel.getMenuClicked() == 2) {
                     loadSettingsFragment();
+                }
+                if (mainActivityDataViewModel.getMenuClicked() == 3) {
+                    //loadProfileFragment();
                 }
             }
         });
@@ -80,4 +84,14 @@ public class MainActivity extends AppCompatActivity {
             fm.beginTransaction().replace(R.id.menus_container, settingsFragment).commit();
         }
     }
+   /* private void loadProfileFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment frag = fm.findFragmentById(R.id.menus_container);
+        if(frag == null) {
+            fm.beginTransaction().add(R.id.menus_container, profileFragment).commit();
+        }
+        else{
+            fm.beginTransaction().replace(R.id.menus_container, profileFragment).commit();
+        }
+    }*/
 }

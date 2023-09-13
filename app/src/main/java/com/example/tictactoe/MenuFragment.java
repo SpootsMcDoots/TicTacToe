@@ -67,6 +67,7 @@ public class MenuFragment extends Fragment {
         Button openSettings = view.findViewById(R.id.settings);
         Button openProfile = view.findViewById(R.id.profile);
 
+        //buttons are numbered according to the order they appear on the menu
         openBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +78,12 @@ public class MenuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mainActivityDataViewModel.setMenuClicked(2);
+            }
+        });
+        openProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDataViewModel.setMenuClicked(3);
             }
         });
         return view;
