@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--https://stackoverflow.com/questions/3882064/how-to-change-color-of-button-in-android-when-clicked-->
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid
+        android:color="#00008B"/>
+    <corners
+        android:radius="100dp" />
+
+</shape>

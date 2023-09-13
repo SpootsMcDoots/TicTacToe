@@ -3,10 +3,13 @@ package com.example.tictactoe;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +61,90 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        NavigationData mainActivityDataViewModel = new ViewModelProvider(getActivity()).get(NavigationData.class);
+
+        Button backButton = view.findViewById(R.id.back);
+
+        Button size3 = view.findViewById(R.id.size3x3);
+        Button size4 = view.findViewById(R.id.size4x4);
+        Button size5 = view.findViewById(R.id.size5x5);
+        size3.setBackgroundResource(R.drawable.default_button);
+        size4.setBackgroundResource(R.drawable.default_button);
+        size5.setBackgroundResource(R.drawable.default_button);
+
+        Button win3 = view.findViewById(R.id.win3);
+        Button win4 = view.findViewById(R.id.win4);
+        Button win5 = view.findViewById(R.id.win5);
+        win3.setBackgroundResource(R.drawable.default_button);
+        win4.setBackgroundResource(R.drawable.default_button);
+        win5.setBackgroundResource(R.drawable.default_button);
+
+        mainActivityDataViewModel.boardSize.observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                if (mainActivityDataViewModel.getBoardSize() == 3) {
+                    size3.setBackgroundResource(R.drawable.default_button_pressed);
+                    size4.setBackgroundResource(R.drawable.default_button);
+                    size5.setBackgroundResource(R.drawable.default_button);
+                }
+                if (mainActivityDataViewModel.getBoardSize() == 4) {
+                    size3.setBackgroundResource(R.drawable.default_button);
+                    size4.setBackgroundResource(R.drawable.default_button_pressed);
+                    size5.setBackgroundResource(R.drawable.default_button);
+                }
+                if (mainActivityDataViewModel.getBoardSize() == 5) {
+                    size3.setBackgroundResource(R.drawable.default_button);
+                    size4.setBackgroundResource(R.drawable.default_button);
+                    size5.setBackgroundResource(R.drawable.default_button_pressed);
+
+                }
+            }
+        });
+
+        //OnClick Data back to data handler
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDataViewModel.setMenuClicked(0);
+            }
+        });
+        size3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDataViewModel.setBoardSize(3);
+            }
+        });
+        size4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDataViewModel.setBoardSize(4);
+            }
+        });
+        size5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDataViewModel.setBoardSize(5);
+            }
+        });
+        win3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDataViewModel.setWinCon(3);
+            }
+        });
+        win4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDataViewModel.setWinCon(4);
+            }
+        });
+        win5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDataViewModel.setWinCon(5);
+            }
+        });
+        return view;
     }
 }

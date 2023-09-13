@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     // Fragment Declaration
     MenuFragment menuFragment = new MenuFragment();
     SettingsFragment settingsFragment = new SettingsFragment();
+    BoardFragment boardFragment = new BoardFragment();
     /**
     *   I'm just chucking variables in atm
     */
@@ -34,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         mainActivityDataViewModel.menuClicked.observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
+                if (mainActivityDataViewModel.getMenuClicked() == 0) {
+                    loadMenuFragment();
+                }
                 if (mainActivityDataViewModel.getMenuClicked() == 1) {
                     loadBoardFragment();
                 }
@@ -56,7 +60,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadBoardFragment() {
-
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment frag = fm.findFragmentById(R.id.menus_container);
+        if(frag == null) {
+            fm.beginTransaction().add(R.id.menus_container, boardFragment).commit();
+        }
+        else{
+            fm.beginTransaction().replace(R.id.menus_container, boardFragment).commit();
+        }
     }
 
     private void loadSettingsFragment() {

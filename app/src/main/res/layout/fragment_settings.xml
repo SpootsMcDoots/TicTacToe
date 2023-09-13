@@ -18,6 +18,20 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.5" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/boardOptions"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/size4x4"
+
+            android:text="Back"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/blue"/>
+
         <!-- Board Size Options -->
         <TextView
             android:id="@+id/boardOptions"
@@ -31,7 +45,7 @@
             app:layout_constraintEnd_toEndOf="parent">
         </TextView>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/size3x3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,11 +56,9 @@
             app:layout_constraintEnd_toStartOf="@+id/size4x4"
 
             android:text="3x3"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/blue">
-        </Button>
+            android:textColor="@color/black"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/size4x4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,11 +69,9 @@
             app:layout_constraintEnd_toStartOf="@id/size5x5"
 
             android:text="4x4"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/blue">
-        </Button>
+            android:textColor="@color/black"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/size5x5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,11 +82,10 @@
             app:layout_constraintEnd_toEndOf="parent"
 
             android:text="5x5"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/blue">
-        </Button>
+            android:textColor="@color/black"/>
 
-        <!-- Win Conditin Options -->
+
+        <!-- Win Condition Options -->
 
         <TextView
             android:id="@+id/winOptions"
