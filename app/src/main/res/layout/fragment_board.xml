@@ -17,6 +17,98 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Top Row -->
+        <ImageButton
+            android:id="@+id/cell_tl"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:background="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/h_boardGL1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/v_boardGL1"/>
+
+        <ImageButton
+            android:id="@+id/cell_tm"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:background="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/h_boardGL1"
+            app:layout_constraintStart_toEndOf="@id/v_boardGL1"
+            app:layout_constraintEnd_toStartOf="@id/v_boardGL2"/>
+
+        <ImageButton
+            android:id="@+id/cell_tr"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:background="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/h_boardGL1"
+            app:layout_constraintStart_toEndOf="@id/v_boardGL2"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Middle Row -->
+        <ImageButton
+            android:id="@+id/cell_ml"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:background="@null"
+            app:layout_constraintTop_toBottomOf="@id/h_boardGL1"
+            app:layout_constraintBottom_toTopOf="@id/h_boardGL2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/v_boardGL1"/>
+
+        <ImageButton
+            android:id="@+id/cell_mm"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:background="@null"
+            app:layout_constraintTop_toBottomOf="@id/h_boardGL1"
+            app:layout_constraintBottom_toTopOf="@id/h_boardGL2"
+            app:layout_constraintStart_toEndOf="@id/v_boardGL1"
+            app:layout_constraintEnd_toStartOf="@id/v_boardGL2"/>
+
+        <ImageButton
+            android:id="@+id/cell_mr"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:background="@null"
+            app:layout_constraintTop_toBottomOf="@id/h_boardGL1"
+            app:layout_constraintBottom_toTopOf="@id/h_boardGL2"
+            app:layout_constraintStart_toEndOf="@id/v_boardGL2"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Bottom Row -->
+        <ImageButton
+            android:id="@+id/cell_bl"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:background="@null"
+            app:layout_constraintTop_toBottomOf="@id/h_boardGL2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/v_boardGL1"/>
+
+        <ImageButton
+            android:id="@+id/cell_bm"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:background="@null"
+            app:layout_constraintTop_toBottomOf="@id/h_boardGL2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/v_boardGL1"
+            app:layout_constraintEnd_toStartOf="@id/v_boardGL2"/>
+
+        <ImageButton
+            android:id="@+id/cell_br"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:background="@null"
+            app:layout_constraintTop_toBottomOf="@id/h_boardGL2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/v_boardGL2"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/h_boardGL1"
@@ -65,6 +157,7 @@
             android:layout_height="match_parent"
             android:background="@color/pink"
             app:layout_constraintStart_toStartOf="@id/v_boardGL2"/>
+            -->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

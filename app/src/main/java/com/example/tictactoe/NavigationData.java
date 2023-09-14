@@ -1,7 +1,5 @@
 package com.example.tictactoe;
 
-import android.view.View;
-
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

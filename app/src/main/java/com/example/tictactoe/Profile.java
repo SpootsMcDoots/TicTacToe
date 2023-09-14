@@ -1,10 +1,28 @@
 package com.example.tictactoe;
 
+
+/**
+ * This holds the information for user profiles
+ */
 public class Profile {
-    String username;
-    int winCount = 0;
-    int loseCount = 0;
-    int draw = 0;
+    private String username;
+    private int winCount = 0;
+    private int loseCount = 0;
+    private int draw = 0;
+    private int avatarId = 0;
+    private int markerId = 0;
+  
+    public Profile() {
+      //TODO default constructor & param constructor
+    }
+    
+    public int getAvatarId() {
+      return avatarId;
+    }
+
+    public void setAvatarId(int newDrawableId) {
+        avatarId = newDrawableId;
+    }
 
     public String getUsername(){
         return username;
@@ -40,4 +58,3 @@ public class Profile {
     public int win_number(){
         return winCount;
     }
-}
