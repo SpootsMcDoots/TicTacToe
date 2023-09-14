@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FrameLayout menuFrame = findViewById(R.id.menus_container);
+        FrameLayout boardFrame = findViewById(R.id.board_container);
 
         loadMenuFragment();
         NavigationData mainActivityDataViewModel = new ViewModelProvider(this).get(NavigationData.class);
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(Integer integer) {
                 if (mainActivityDataViewModel.getMenuClicked() == 1) {
                     menuFrame.setVisibility(View.GONE);
+                    boardFrame.setVisibility(View.VISIBLE);
                     loadBoardFragment();
                 }
                 if (mainActivityDataViewModel.getMenuClicked() == 2) {
@@ -35,10 +37,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mainActivityDataViewModel.settingsClicked.observe(this, new Observer<Integer>() {
+        mainActivityDataViewModel.backClicked.observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                if (mainActivityDataViewModel.getSettingsClicked() == 1) {
+                if (mainActivityDataViewModel.getBackClicked() == 1) {
+                    mainActivityDataViewModel.setBackClicked(0);
+                    boardFrame.setVisibility(View.GONE);
+                    menuFrame.setVisibility(View.VISIBLE);
                     loadMenuFragment();
                 }
             }

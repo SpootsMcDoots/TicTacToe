@@ -122,7 +122,7 @@ public class SettingsFragment extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            mainActivityDVM.setSettingsClicked(1);
+            mainActivityDVM.setBackClicked(1);
         }
         });
 

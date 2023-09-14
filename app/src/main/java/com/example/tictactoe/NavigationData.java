@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModel;
 
 public class NavigationData extends ViewModel {
     public MutableLiveData<Integer> menuClicked;
-    public MutableLiveData<Integer> settingsClicked;
+    public MutableLiveData<Integer> backClicked;
     public NavigationData() {
         menuClicked = new MediatorLiveData<Integer>();
         menuClicked.setValue(0);
 
-        settingsClicked = new MediatorLiveData<Integer>();
-        settingsClicked.setValue(0);
+        backClicked = new MediatorLiveData<Integer>();
+        backClicked.setValue(0);
     }
 
     public int getMenuClicked() {
@@ -23,7 +23,7 @@ public class NavigationData extends ViewModel {
         menuClicked.setValue(value);
     }
 
-    public int getSettingsClicked()  { return settingsClicked.getValue(); }
+    public int getBackClicked()  { return backClicked.getValue(); }
 
-    public void setSettingsClicked(int value)  { settingsClicked.setValue(value); }
+    public void setBackClicked(int value)  { backClicked.setValue(value); }
 }
