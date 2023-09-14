@@ -1,35 +1,41 @@
 package com.example.tictactoe;
 
 
+import android.media.Image;
+import android.widget.ImageButton;
+
 /**
  * This holds the information for individual cells
  * drawableID can be used to change the board from X to 0;
  */
 
 public class BoardCell {
+    private ImageButton cell;
+    private int playerId = 0; //If cell is occupied (1 for player1, 2 for player2, 0 for unoccupied)
 
-    private int drawableId;
-    private boolean occupied;
-    //private int playerID?
-
-     public BoardCell() {
-         drawableId = 0;
-         occupied = false;
+     public BoardCell(ImageButton newCell) {
+         cell = newCell;
+         playerId = 0;
      }
 
-     public int getDrawableId() {
-         return drawableId;
+     public void fillCell(int markerId, int newPlayerId) {
+         playerId = newPlayerId;
+         cell.setImageResource(markerId);
      }
 
-     public void setDrawableId(int newDrawableId) {
-         drawableId = newDrawableId;
+    public ImageButton getCell() {
+        return cell;
+    }
+
+     public int getPlayerID() {
+         return playerId;
      }
 
-     public boolean isOccupied() {
-         return occupied;
-     }
-
-    public void setOccupied(boolean newbool) {
-        occupied = newbool;
+    public boolean isEmpty() {
+         boolean isEmpty = false;
+         if( playerId != 0) {
+             isEmpty = true;
+         }
+         return isEmpty;
     }
 }

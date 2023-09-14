@@ -3,10 +3,13 @@ package com.example.tictactoe;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +62,69 @@ public class BoardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_board, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_board, container, false);
+
+        BoardCell[][] board = {
+                { new BoardCell(rootView.findViewById(R.id.cell_tl)) ,  new BoardCell(rootView.findViewById(R.id.cell_tm)), new BoardCell(rootView.findViewById(R.id.cell_tr)) },
+                { new BoardCell(rootView.findViewById(R.id.cell_ml)) ,  new BoardCell(rootView.findViewById(R.id.cell_mm)), new BoardCell(rootView.findViewById(R.id.cell_mr)) },
+                { new BoardCell(rootView.findViewById(R.id.cell_bl)) ,  new BoardCell(rootView.findViewById(R.id.cell_bm)), new BoardCell(rootView.findViewById(R.id.cell_br)) }
+        };
+        (board[0][0].getCell()).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                board[0][0].fillCell(R.drawable.cross, 1);
+            }
+        });
+        (board[0][1].getCell()).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                board[0][1].fillCell(R.drawable.cross, 1);
+            }
+        });
+        (board[0][2].getCell()).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                board[0][2].fillCell(R.drawable.cross, 1);
+            }
+        });
+        (board[1][0].getCell()).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                board[1][0].fillCell(R.drawable.cross, 1);
+            }
+        });
+        (board[1][1].getCell()).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                board[1][1].fillCell(R.drawable.cross, 1);
+            }
+        });
+        (board[1][2].getCell()).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                board[1][2].fillCell(R.drawable.cross, 1);
+            }
+        });
+        (board[2][0].getCell()).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                board[2][0].fillCell(R.drawable.cross, 1);
+            }
+        });
+        (board[2][1].getCell()).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                board[2][1].fillCell(R.drawable.cross, 1);
+            }
+        });
+        (board[2][2].getCell()).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                board[2][2].fillCell(R.drawable.cross, 1);
+            }
+        });
+
+
+        return rootView;
     }
 }

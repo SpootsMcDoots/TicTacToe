@@ -2,7 +2,7 @@ package com.example.tictactoe;
 
 /**
  * This needs a lot of work but its a start
- */
+ *
 
 public class Board {
         //private static final int WATER = R.drawable.ic_water;
@@ -49,7 +49,7 @@ public class Board {
      *      {
      *          this.board = generateBoard();
      *      }
-     */
+     *
         public void setSize(int newSize) {
             size = newSize;
         }
@@ -63,3 +63,4 @@ public class Board {
             return board[ii][jj];
         }
 }
+*/
