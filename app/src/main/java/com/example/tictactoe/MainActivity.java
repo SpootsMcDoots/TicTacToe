@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     public MenuFragment menuFragment = new MenuFragment();
@@ -20,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         FrameLayout menuFrame = findViewById(R.id.menus_container);
         FrameLayout boardFrame = findViewById(R.id.board_container);
+        NavigationData mainActivityDataViewModel = new ViewModelProvider(this).get(NavigationData.class);
 
         loadMenuFragment();
-        NavigationData mainActivityDataViewModel = new ViewModelProvider(this).get(NavigationData.class);
+
         mainActivityDataViewModel.menuClicked.observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {

@@ -65,8 +65,15 @@ public class BoardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_board, container, false);
-        NavigationData mainActivityDVM = new ViewModelProvider(getActivity())
-                .get(NavigationData.class);
+        GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
+        NavigationData navDVM = new ViewModelProvider(getActivity()).get(NavigationData.class);
+
+       if(gameDVM.playersIsEmpty()) {
+           gameDVM.setPlayer1(new Profile(1, R.drawable.cross));
+           gameDVM.setPlayer2(new Profile(1, R.drawable.naught));
+           gameDVM.players.add(gameDVM.getPlayer1());
+           gameDVM.players.add(gameDVM.getPlayer2());
+        }
 
         BoardCell[][] board = {
                 { new BoardCell(rootView.findViewById(R.id.cell_tl)) ,  new BoardCell(rootView.findViewById(R.id.cell_tm)), new BoardCell(rootView.findViewById(R.id.cell_tr)) },
@@ -79,7 +86,7 @@ public class BoardFragment extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivityDVM.setBackClicked(1);
+                navDVM.setBackClicked(1);
             }
         });
 

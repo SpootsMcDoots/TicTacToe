@@ -12,8 +12,15 @@ public class Profile {
     private int avatarId = 0;
     private int markerId = 0;
 
-    public Profile() {
-        //TODO default constructor & param constructor
+    public Profile(int num, int newMarkerId) {
+        username = "Player" + Integer.toString(num);
+        markerId = newMarkerId;
+    }
+
+    public Profile(String newUser, int newMarkerId) {
+        username = newUser;
+        markerId = newMarkerId;
+        //avatarId = ;
     }
 
     public int getAvatarId() {
