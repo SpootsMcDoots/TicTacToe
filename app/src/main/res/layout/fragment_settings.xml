@@ -1,91 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SettingsFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/settingsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/GL1"
-            android:layout_width="wrap_content"
+         <!-- Board Size Options -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/board"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5" />
-
-        <!-- Board Size Options -->
-        <TextView
-            android:id="@+id/boardOptions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Board Size"
-
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/GL1"
+            app:layout_constraintBottom_toTopOf="@id/win"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
-        </TextView>
 
-        <Button
-            android:id="@+id/size3x3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/boardOptions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Board Size"
+                android:padding="10dp"
 
-            app:layout_constraintTop_toBottomOf="@id/boardOptions"
-            app:layout_constraintBottom_toBottomOf="@id/GL1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/size4x4"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+            </TextView>
 
-            android:text="3x3"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/blue">
-        </Button>
+            <Button
+                android:id="@+id/size3x3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <Button
-            android:id="@+id/size4x4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/boardOptions"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/size4x4"
 
-            app:layout_constraintTop_toBottomOf="@id/boardOptions"
-            app:layout_constraintBottom_toBottomOf="@id/GL1"
-            app:layout_constraintStart_toEndOf="@id/size3x3"
-            app:layout_constraintEnd_toStartOf="@id/size5x5"
+                android:text="3x3"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/blue">
+            </Button>
 
-            android:text="4x4"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/blue">
-        </Button>
+            <Button
+                android:id="@+id/size4x4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <Button
-            android:id="@+id/size5x5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/boardOptions"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/size3x3"
+                app:layout_constraintEnd_toStartOf="@id/size5x5"
 
-            app:layout_constraintTop_toBottomOf="@id/boardOptions"
-            app:layout_constraintBottom_toBottomOf="@id/GL1"
-            app:layout_constraintStart_toEndOf="@id/size4x4"
-            app:layout_constraintEnd_toEndOf="parent"
+                android:text="4x4"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/blue">
+            </Button>
 
-            android:text="5x5"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/blue">
-        </Button>
+            <Button
+                android:id="@+id/size5x5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintTop_toBottomOf="@id/boardOptions"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/size4x4"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                android:text="5x5"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/blue">
+            </Button>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Win Conditin Options -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/win"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/board"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:id="@+id/winOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:text="Win Condition"
 
-            app:layout_constraintTop_toTopOf="@id/GL1"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
         </TextView>
@@ -134,7 +141,19 @@
             android:textColor="@color/black"
             android:backgroundTint="@color/blue">
         </Button>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:text="Quit"
+            android:textColor="@color/black"
+            android:layout_margin="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+        </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

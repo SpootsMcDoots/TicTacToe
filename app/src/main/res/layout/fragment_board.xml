@@ -18,6 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
 
+        <!--
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/h_boardGL1"
             android:layout_width="match_parent"
@@ -65,6 +66,7 @@
             android:layout_height="match_parent"
             android:background="@color/pink"
             app:layout_constraintStart_toStartOf="@id/v_boardGL2"/>
+            -->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
