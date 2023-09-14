@@ -3,10 +3,13 @@ package com.example.tictactoe;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +62,70 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
+        NavigationData mainActivityDVM = new ViewModelProvider(getActivity())
+                .get(NavigationData.class);
+
+        //TODO: implement game data
+        //GameData mainActivityDVM = new ViewModelProvider(getActivity())
+        //  .get(GameData.class);
+
+        Button[] boardSizes =   {   rootView.findViewById(R.id.size3x3),
+                                    rootView.findViewById(R.id.size4x4),
+                                    rootView.findViewById(R.id.size5x5)};
+
+        Button[] winCons =   {  rootView.findViewById(R.id.win3),
+                                rootView.findViewById(R.id.win4),
+                                rootView.findViewById(R.id.win5)};
+
+        Button back = rootView.findViewById(R.id.backButton);
+
+        //Boardsizes listeners.
+        boardSizes[0].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //GameData.setBoardSize(3);
+            }
+        });
+        boardSizes[1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //GameData.setBoardSize(4);
+            }
+        });
+        boardSizes[2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //GameData.setBoardSize(5);
+            }
+        });
+
+        //WinCons listeners
+        winCons[0].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //GameData.setWinCon(3);
+            }
+        });
+        winCons[1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //GameData.setWinCon(4);
+            }
+        });
+        winCons[2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //GameData.setWinCon(5);
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            mainActivityDVM.setSettingsClicked(1);
+        }
+        });
+
+        return rootView;
     }
 }

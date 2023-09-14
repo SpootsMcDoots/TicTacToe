@@ -34,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        mainActivityDataViewModel.settingsClicked.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                if (mainActivityDataViewModel.getSettingsClicked() == 1) {
+                    loadMenuFragment();
+                }
+            }
+        });
     }
 
     private void loadMenuFragment() {
