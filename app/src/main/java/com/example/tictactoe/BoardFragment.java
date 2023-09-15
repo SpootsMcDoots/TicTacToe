@@ -68,82 +68,31 @@ public class BoardFragment extends Fragment {
         GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
         NavigationData navDVM = new ViewModelProvider(getActivity()).get(NavigationData.class);
 
+        Board board = Board.get();
+
+        RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), board.getSize(), GridLayoutManager.HORIZONTAL, false);
+        rv.setLayoutManager(gridLayoutManager);
+
+        BoardAdapter adapter = new BoardAdapter(board);
+        rv.setAdapter(adapter);
+
        if(gameDVM.playersIsEmpty()) {
            gameDVM.setPlayer1(new Profile(1, R.drawable.cross));
            gameDVM.setPlayer2(new Profile(1, R.drawable.naught));
            gameDVM.players.add(gameDVM.getPlayer1());
            gameDVM.players.add(gameDVM.getPlayer2());
-        }
+       }
 
-        BoardCell[][] board = {
-                { new BoardCell(rootView.findViewById(R.id.cell_tl)) ,  new BoardCell(rootView.findViewById(R.id.cell_tm)), new BoardCell(rootView.findViewById(R.id.cell_tr)) },
-                { new BoardCell(rootView.findViewById(R.id.cell_ml)) ,  new BoardCell(rootView.findViewById(R.id.cell_mm)), new BoardCell(rootView.findViewById(R.id.cell_mr)) },
-                { new BoardCell(rootView.findViewById(R.id.cell_bl)) ,  new BoardCell(rootView.findViewById(R.id.cell_bm)), new BoardCell(rootView.findViewById(R.id.cell_br)) }
-        };
+       Button back = rootView.findViewById(R.id.backButton);
 
-        Button back = rootView.findViewById(R.id.backButton);
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+       back.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
                 navDVM.setBackClicked(1);
             }
-        });
-
-        (board[0][0].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[0][0].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[0][1].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[0][1].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[0][2].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[0][2].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[1][0].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[1][0].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[1][1].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[1][1].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[1][2].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[1][2].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[2][0].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[2][0].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[2][1].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[2][1].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[2][2].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[2][2].fillCell(R.drawable.cross, 1);
-            }
-        });
+       });
 
         return rootView;
     }
