@@ -13,7 +13,6 @@ public class GameData extends ViewModel{
     public GameData() {
         player1 = new MediatorLiveData<Profile>();
         player2 = new MediatorLiveData<Profile>();
-
         players = new ArrayList<Profile>();
     }
 
