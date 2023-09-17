@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         FrameLayout menuFrame = findViewById(R.id.menus_container);
         FrameLayout boardFrame = findViewById(R.id.board_container);
         NavigationData mainActivityDataViewModel = new ViewModelProvider(this).get(NavigationData.class);
+        GameData gameDVM = new ViewModelProvider(this).get(GameData.class);
 
         loadMenuFragment();
 

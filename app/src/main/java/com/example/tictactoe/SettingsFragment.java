@@ -63,12 +63,8 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
-        NavigationData mainActivityDVM = new ViewModelProvider(getActivity())
-                .get(NavigationData.class);
-
-        //TODO: implement game data
-        //GameData mainActivityDVM = new ViewModelProvider(getActivity())
-        //  .get(GameData.class);
+        GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
+        NavigationData mainActivityDVM = new ViewModelProvider(getActivity()).get(NavigationData.class);
 
         Button[] boardSizes =   {   rootView.findViewById(R.id.size3x3),
                                     rootView.findViewById(R.id.size4x4),
@@ -84,19 +80,19 @@ public class SettingsFragment extends Fragment {
         boardSizes[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //GameData.setBoardSize(3);
+                gameDVM.setBoardSize(3);
             }
         });
         boardSizes[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //GameData.setBoardSize(4);
+                gameDVM.setBoardSize(4);
             }
         });
         boardSizes[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //GameData.setBoardSize(5);
+                gameDVM.setBoardSize(5);
             }
         });
 
@@ -104,19 +100,19 @@ public class SettingsFragment extends Fragment {
         winCons[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //GameData.setWinCon(3);
+                gameDVM.setWinCon(3);
             }
         });
         winCons[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //GameData.setWinCon(4);
+                gameDVM.setWinCon(4);
             }
         });
         winCons[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //GameData.setWinCon(5);
+                gameDVM.setWinCon(5);
             }
         });
         back.setOnClickListener(new View.OnClickListener() {

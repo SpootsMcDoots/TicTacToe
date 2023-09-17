@@ -8,13 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.annotation.NonNull;
 
 public class BoardCellVH extends RecyclerView.ViewHolder {
-
     public ImageButton boardButton;
 
-    public BoardCellVH(@NonNull View itemView, ViewGroup parent) {
+    public BoardCellVH(@NonNull View itemView, ViewGroup parent, int size) {
         super(itemView);
-        int hSize = parent.getMeasuredHeight() / 3;
-        int wSize = parent.getMeasuredWidth() / 3;
+        int hSize = parent.getMeasuredHeight() / size;
+        int wSize = parent.getMeasuredWidth() / size;
         ViewGroup.LayoutParams lp = itemView.getLayoutParams();
         lp.height = hSize;
         lp.width = wSize;
