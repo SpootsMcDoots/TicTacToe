@@ -66,7 +66,7 @@ public class BoardFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_board, container, false);
         GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
-        NavigationData navDVM = new ViewModelProvider(getActivity()).get(NavigationData.class);
+        AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
 
         Board board = Board.get();
 
@@ -90,7 +90,7 @@ public class BoardFragment extends Fragment {
        back.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-                navDVM.setBackClicked(1);
+               mainActivityDVM.setMenuClicked(0);
             }
        });
 

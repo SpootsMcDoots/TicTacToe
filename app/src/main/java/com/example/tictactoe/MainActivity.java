@@ -22,32 +22,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         FrameLayout menuFrame = findViewById(R.id.menus_container);
         FrameLayout boardFrame = findViewById(R.id.board_container);
-        NavigationData mainActivityDataViewModel = new ViewModelProvider(this).get(NavigationData.class);
+        AppData mainActivityDVM = new ViewModelProvider(this).get(AppData.class);
 
         loadMenuFragment();
 
-        mainActivityDataViewModel.menuClicked.observe(this, new Observer<Integer>() {
+        mainActivityDVM.menuClicked.observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                if (mainActivityDataViewModel.getMenuClicked() == 1) {
+                //BACK BUTTON
+                if (mainActivityDVM.getMenuClicked() == 0) {
+                    boardFrame.setVisibility(View.GONE);
+                    menuFrame.setVisibility(View.VISIBLE);
+                    loadMenuFragment();
+                }
+                if (mainActivityDVM.getMenuClicked() == 1) {
                     menuFrame.setVisibility(View.GONE);
                     boardFrame.setVisibility(View.VISIBLE);
                     loadBoardFragment();
                 }
-                if (mainActivityDataViewModel.getMenuClicked() == 2) {
+                if (mainActivityDVM.getMenuClicked() == 2) {
                     loadSettingsFragment();
-                }
-            }
-        });
-
-        mainActivityDataViewModel.backClicked.observe(this, new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
-                if (mainActivityDataViewModel.getBackClicked() == 1) {
-                    mainActivityDataViewModel.setBackClicked(0);
-                    boardFrame.setVisibility(View.GONE);
-                    menuFrame.setVisibility(View.VISIBLE);
-                    loadMenuFragment();
                 }
             }
         });
