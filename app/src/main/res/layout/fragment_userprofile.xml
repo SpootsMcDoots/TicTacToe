@@ -1,45 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".UserprofileFragment">
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="#E0E0E0">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:text="TextView" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            tools:layout_editor_absoluteX="94dp"
-            tools:layout_editor_absoluteY="61dp"
-            tools:src="@tools:sample/backgrounds/scenic" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="34dp"
-            android:layout_height="33dp"
-            android:src="@drawable/ic_launcher_foreground"
-            tools:layout_editor_absoluteX="55dp"
-            tools:layout_editor_absoluteY="62dp" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="35dp"
-            android:layout_height="32dp"
-            tools:layout_editor_absoluteX="15dp"
-            tools:layout_editor_absoluteY="63dp"
-            tools:src="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Choose"
-            tools:layout_editor_absoluteX="48dp"
-            tools:layout_editor_absoluteY="34dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Call" />
+</LinearLayout>
