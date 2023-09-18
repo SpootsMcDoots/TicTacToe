@@ -68,7 +68,7 @@ public class BoardFragment extends Fragment {
         GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
 
-        Board board = new Board(gameDVM.getBoardSize());
+        Board board = new Board(mainActivityDVM.getBoardSize());
 
         RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), board.getSize(), GridLayoutManager.VERTICAL, false);
@@ -82,6 +82,7 @@ public class BoardFragment extends Fragment {
            gameDVM.players.getValue().add(gameDVM.getPlayer1());
            gameDVM.players.getValue().add(gameDVM.getPlayer2());
        }
+       gameDVM.newGame();
 
        Button back = rootView.findViewById(R.id.backButton);
 

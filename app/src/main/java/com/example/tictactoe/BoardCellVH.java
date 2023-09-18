@@ -18,5 +18,8 @@ public class BoardCellVH extends RecyclerView.ViewHolder {
         lp.height = hSize;
         lp.width = wSize;
         boardButton = itemView.findViewById(R.id.cellButton);
+
+        int[][] boardArray = new int[3][3];
+
     }
 }

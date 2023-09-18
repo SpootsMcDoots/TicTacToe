@@ -16,6 +16,7 @@ public class GameData extends ViewModel{
         player1 = new MediatorLiveData<Profile>();
         player2 = new MediatorLiveData<Profile>();
         players = new MediatorLiveData<ArrayList>();
+        turnPlayer = new MediatorLiveData<Profile>();
         ArrayList<Profile> newList = new ArrayList<Profile>();
         players.setValue(newList);
     }
