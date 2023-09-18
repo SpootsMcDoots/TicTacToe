@@ -68,21 +68,19 @@ public class BoardFragment extends Fragment {
         GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
 
-        Board board = Board.get();
+        Board board = new Board(gameDVM.getBoardSize());
 
         RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), board.getSize(), GridLayoutManager.HORIZONTAL, false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), board.getSize(), GridLayoutManager.VERTICAL, false);
         rv.setLayoutManager(gridLayoutManager);
-
         BoardAdapter adapter = new BoardAdapter(board);
         rv.setAdapter(adapter);
 
        if(gameDVM.playersIsEmpty()) {
            gameDVM.setPlayer1(new Profile(1, R.drawable.cross));
            gameDVM.setPlayer2(new Profile(1, R.drawable.naught));
-           gameDVM.players.add(gameDVM.getPlayer1());
-           gameDVM.players.add(gameDVM.getPlayer2());
+           gameDVM.players.getValue().add(gameDVM.getPlayer1());
+           gameDVM.players.getValue().add(gameDVM.getPlayer2());
        }
 
        Button back = rootView.findViewById(R.id.backButton);
