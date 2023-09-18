@@ -10,26 +10,34 @@ import android.widget.ImageButton;
  */
 
 public class BoardCell {
-    private ImageButton cell;
+    private int markerId;
     private int playerId = 0; //If cell is occupied (1 for player1, 2 for player2, 0 for unoccupied)
 
-     public BoardCell(ImageButton newCell) {
-         cell = newCell;
+     public BoardCell() {
+         markerId = android.R.color.transparent;
          playerId = 0;
      }
 
-     public void fillCell(int markerId, int newPlayerId) {
+     /* public void fillCell(int markerId, int newPlayerId) {
          playerId = newPlayerId;
-         cell.setImageResource(markerId);
-     }
+         markerId.setImageResource(markerId);
+     } */
 
-    public ImageButton getCell() {
-        return cell;
+    public int getMarkerId() {
+        return markerId;
     }
 
      public int getPlayerID() {
          return playerId;
      }
+
+    public void setPlayerID(int newId) {
+        playerId = newId;
+    }
+
+    public void setMarkerId(int newId) {
+        markerId = newId;
+    }
 
     public boolean isEmpty() {
          boolean isEmpty = false;

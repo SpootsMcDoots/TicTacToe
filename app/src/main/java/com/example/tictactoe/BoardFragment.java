@@ -3,12 +3,14 @@ package com.example.tictactoe;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 /**
@@ -63,67 +65,34 @@ public class BoardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_board, container, false);
+        GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
+        AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
 
-        BoardCell[][] board = {
-                { new BoardCell(rootView.findViewById(R.id.cell_tl)) ,  new BoardCell(rootView.findViewById(R.id.cell_tm)), new BoardCell(rootView.findViewById(R.id.cell_tr)) },
-                { new BoardCell(rootView.findViewById(R.id.cell_ml)) ,  new BoardCell(rootView.findViewById(R.id.cell_mm)), new BoardCell(rootView.findViewById(R.id.cell_mr)) },
-                { new BoardCell(rootView.findViewById(R.id.cell_bl)) ,  new BoardCell(rootView.findViewById(R.id.cell_bm)), new BoardCell(rootView.findViewById(R.id.cell_br)) }
-        };
-        (board[0][0].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[0][0].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[0][1].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[0][1].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[0][2].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[0][2].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[1][0].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[1][0].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[1][1].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[1][1].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[1][2].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[1][2].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[2][0].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[2][0].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[2][1].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[2][1].fillCell(R.drawable.cross, 1);
-            }
-        });
-        (board[2][2].getCell()).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                board[2][2].fillCell(R.drawable.cross, 1);
-            }
-        });
+        Board board = Board.get();
 
+        RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), board.getSize(), GridLayoutManager.HORIZONTAL, false);
+        rv.setLayoutManager(gridLayoutManager);
+
+        BoardAdapter adapter = new BoardAdapter(board);
+        rv.setAdapter(adapter);
+
+       if(gameDVM.playersIsEmpty()) {
+           gameDVM.setPlayer1(new Profile(1, R.drawable.cross));
+           gameDVM.setPlayer2(new Profile(1, R.drawable.naught));
+           gameDVM.players.add(gameDVM.getPlayer1());
+           gameDVM.players.add(gameDVM.getPlayer2());
+       }
+
+       Button back = rootView.findViewById(R.id.backButton);
+
+       back.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               mainActivityDVM.setMenuClicked(0);
+            }
+       });
 
         return rootView;
     }

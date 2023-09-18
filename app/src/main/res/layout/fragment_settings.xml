@@ -28,7 +28,7 @@
                 app:layout_constraintEnd_toEndOf="parent">
             </TextView>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/size3x3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,11 +39,9 @@
                 app:layout_constraintEnd_toStartOf="@+id/size4x4"
 
                 android:text="3x3"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/blue">
-            </Button>
+                android:textColor="@color/black"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/size4x4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,11 +52,9 @@
                 app:layout_constraintEnd_toStartOf="@id/size5x5"
 
                 android:text="4x4"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/blue">
-            </Button>
+                android:textColor="@color/black"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/size5x5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,9 +65,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
 
                 android:text="5x5"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/blue">
-            </Button>
+                android:textColor="@color/black"/>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -97,7 +92,7 @@
             app:layout_constraintEnd_toEndOf="parent">
         </TextView>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/win3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -108,11 +103,9 @@
             app:layout_constraintEnd_toStartOf="@+id/win4"
 
             android:text="3x3"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/blue">
-        </Button>
+            android:textColor="@color/black" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/win4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -123,11 +116,9 @@
             app:layout_constraintEnd_toStartOf="@id/win5"
 
             android:text="4x4"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/blue">
-        </Button>
+            android:textColor="@color/black"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/win5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -138,22 +129,21 @@
             app:layout_constraintEnd_toEndOf="parent"
 
             android:text="5x5"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/blue">
-        </Button>
+            android:textColor="@color/black"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/blue"
-            android:text="Quit"
-            android:textColor="@color/black"
-            android:layout_margin="4dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-        </Button>
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#48b3ff"
+        android:text="Back"
+        android:textColor="@color/black"
+        android:layout_margin="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

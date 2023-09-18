@@ -61,20 +61,20 @@ public class MenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
-        NavigationData mainActivityDataViewModel = new ViewModelProvider(getActivity()).get(NavigationData.class);
+        AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
         Button openSettings = view.findViewById(R.id.settings);
         Button newGame = view.findViewById(R.id.newgame);
         openSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivityDataViewModel.setMenuClicked(2);
+                mainActivityDVM.setMenuClicked(2);
             }
         });
 
         newGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivityDataViewModel.setMenuClicked(1);
+                mainActivityDVM.setMenuClicked(1);
             }
         });
         return view;
