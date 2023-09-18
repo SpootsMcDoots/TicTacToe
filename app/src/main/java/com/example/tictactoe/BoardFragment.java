@@ -65,7 +65,6 @@ public class BoardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_board, container, false);
-        GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
 
         Board board = Board.get();
@@ -78,11 +77,11 @@ public class BoardFragment extends Fragment {
         BoardAdapter adapter = new BoardAdapter(board);
         rv.setAdapter(adapter);
 
-       if(gameDVM.playersIsEmpty()) {
-           gameDVM.setPlayer1(new Profile(1, R.drawable.cross));
-           gameDVM.setPlayer2(new Profile(1, R.drawable.naught));
-           gameDVM.players.add(gameDVM.getPlayer1());
-           gameDVM.players.add(gameDVM.getPlayer2());
+       if(mainActivityDVM.playersIsEmpty()) {
+           mainActivityDVM.setPlayer1(new Profile(1, R.drawable.cross));
+           mainActivityDVM.setPlayer2(new Profile(1, R.drawable.naught));
+           mainActivityDVM.players.add(mainActivityDVM.getPlayer1());
+           mainActivityDVM.players.add(mainActivityDVM.getPlayer2());
        }
 
        Button back = rootView.findViewById(R.id.backButton);

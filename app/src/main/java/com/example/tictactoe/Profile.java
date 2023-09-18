@@ -12,8 +12,8 @@ public class Profile {
     private int avatarId = 0;
     private int markerId = 0;
 
-    public Profile() {
-        //TODO default constructor & param constructor
+    public Profile(int x, int avatar) {
+        setAvatarId(avatar);
     }
 
     public int getAvatarId() {
