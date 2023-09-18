@@ -3,10 +3,13 @@ package com.example.tictactoe;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +62,113 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
+        AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
+
+        //TODO: implement game data
+        //GameData mainActivityDVM = new ViewModelProvider(getActivity())
+        //  .get(GameData.class);
+
+        Button[] boardSizes =   {   rootView.findViewById(R.id.size3x3),
+                                    rootView.findViewById(R.id.size4x4),
+                                    rootView.findViewById(R.id.size5x5)};
+        for (Button button : boardSizes) {
+            button.setBackgroundResource(R.drawable.default_button);
+        }
+
+        Button[] winCons =   {  rootView.findViewById(R.id.win3),
+                                rootView.findViewById(R.id.win4),
+                                rootView.findViewById(R.id.win5)};
+        for (Button button : winCons) {
+            button.setBackgroundResource(R.drawable.default_button);
+        }
+
+        Button back = rootView.findViewById(R.id.backButton);
+
+        //BoardSizeMonitor
+        mainActivityDVM.boardSize.observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            //Monitor for changes, if the buttons are pressed, change the drawable to reflect that to the user
+            public void onChanged(Integer integer) {
+                for (Button button : boardSizes) {
+                    button.setBackgroundResource(R.drawable.default_button);
+                }
+                if (mainActivityDVM.getBoardSize() == 3) {
+                    boardSizes[0].setBackgroundResource(R.drawable.default_button_pressed);
+                }
+                if (mainActivityDVM.getBoardSize() == 4) {
+                    boardSizes[1].setBackgroundResource(R.drawable.default_button_pressed);
+                }
+                if (mainActivityDVM.getBoardSize() == 5) {
+                    boardSizes[2].setBackgroundResource(R.drawable.default_button_pressed);
+
+                }
+            }
+        });
+        //WinConMonitor
+        mainActivityDVM.winCon.observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            //Monitor for changes, if the buttons are pressed, change the drawable to reflect that to the user
+            public void onChanged(Integer integer) {
+                for (Button button : winCons) {
+                    button.setBackgroundResource(R.drawable.default_button);
+                }
+                if (mainActivityDVM.getWinCon() == 3) {
+                    winCons[0].setBackgroundResource(R.drawable.default_button_pressed);
+                }
+                if (mainActivityDVM.getWinCon() == 4) {
+                    winCons[1].setBackgroundResource(R.drawable.default_button_pressed);
+                }
+                if (mainActivityDVM.getWinCon() == 5) {
+                    winCons[2].setBackgroundResource(R.drawable.default_button_pressed);
+                }
+            }
+        });
+
+        //Button listeners.
+        //OnClick Data back to data handler
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDVM.setMenuClicked(0);
+            }
+        });
+        boardSizes[0].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDVM.setBoardSize(3);
+            }
+        });
+        boardSizes[1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDVM.setBoardSize(4);
+            }
+        });
+        boardSizes[2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDVM.setBoardSize(5);
+            }
+        });
+        winCons[0].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDVM.setWinCon(3);
+            }
+        });
+        winCons[1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDVM.setWinCon(4);
+            }
+        });
+        winCons[2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDVM.setWinCon(5);
+            }
+        });
+        return rootView;
     }
 }
