@@ -39,7 +39,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardCellVH> {
 
                 single.setMarkerId(R.drawable.cross);
                 holder.boardButton.setImageResource(R.drawable.cross);
-                data.setBoardCell(position % data.getSize(),position / data.getSize(), 1);
+                data.setBoardCell(position / data.getSize(),position % data.getSize(), 1);
                 Log.d("TAG", (Arrays.deepToString(data.getBoard())));
             }
         });

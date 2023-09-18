@@ -71,7 +71,7 @@ public class BoardFragment extends Fragment {
         GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
 
-        Board board = new Board(mainActivityDVM.getBoardSize());
+        Board board = new Board(mainActivityDVM.getBoardSize(), mainActivityDVM.getWinCon());
 
         RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), board.getSize(), GridLayoutManager.VERTICAL, false);
