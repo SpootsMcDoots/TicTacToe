@@ -2,16 +2,11 @@ package com.example.tictactoe;
 
 /**
  * This needs a lot of work but its a start
- *
+ */
 
 public class Board {
-        //private static final int WATER = R.drawable.ic_water;
-        //private static final Random rng = new Random();
-
-        //TODO: change to boardCell array
         private BoardCell[][] board;
-        private static int size;
-
+        private static int size = 3;
         private static Board instance = null;
 
         public static Board get()
@@ -34,7 +29,6 @@ public class Board {
                     board[ii][jj] = new BoardCell();
                 }
             }
-
             return board;
         }
 
@@ -44,12 +38,11 @@ public class Board {
             board = grid;
         }
 
-    /**
-     *      public void regenerate()
-     *      {
-     *          this.board = generateBoard();
-     *      }
-     *
+       public void regenerate()
+       {
+           board = generateBoard();
+       }
+
         public void setSize(int newSize) {
             size = newSize;
         }
@@ -58,9 +51,12 @@ public class Board {
             return size;
         }
 
+        public int getTotalSize() {
+        return size*size;
+    }
+
         public BoardCell getBoardCell(int ii, int jj)
         {
             return board[ii][jj];
         }
 }
-*/

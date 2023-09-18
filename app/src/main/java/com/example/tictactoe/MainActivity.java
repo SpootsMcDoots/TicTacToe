@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     public MenuFragment menuFragment = new MenuFragment();
@@ -19,17 +21,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FrameLayout menuFrame = findViewById(R.id.menus_container);
+        FrameLayout boardFrame = findViewById(R.id.board_container);
+        AppData mainActivityDVM = new ViewModelProvider(this).get(AppData.class);
 
         loadMenuFragment();
-        NavigationData mainActivityDataViewModel = new ViewModelProvider(this).get(NavigationData.class);
-        mainActivityDataViewModel.menuClicked.observe(this, new Observer<Integer>() {
+
+        mainActivityDVM.menuClicked.observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                if (mainActivityDataViewModel.getMenuClicked() == 1) {
+                //BACK BUTTON
+                if (mainActivityDVM.getMenuClicked() == 0) {
+                    boardFrame.setVisibility(View.GONE);
+                    menuFrame.setVisibility(View.VISIBLE);
+                    loadMenuFragment();
+                }
+                if (mainActivityDVM.getMenuClicked() == 1) {
                     menuFrame.setVisibility(View.GONE);
+                    boardFrame.setVisibility(View.VISIBLE);
                     loadBoardFragment();
                 }
-                if (mainActivityDataViewModel.getMenuClicked() == 2) {
+                if (mainActivityDVM.getMenuClicked() == 2) {
                     loadSettingsFragment();
                 }
             }
