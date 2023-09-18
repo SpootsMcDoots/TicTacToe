@@ -7,11 +7,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,7 +86,7 @@ public class BoardFragment extends Fragment {
            gameDVM.players.getValue().add(gameDVM.getPlayer2());
        }
        gameDVM.newGame();
-
+       Log.d("TAG", (Arrays.deepToString(board.getBoard())));
        Button back = rootView.findViewById(R.id.backButton);
 
        back.setOnClickListener(new View.OnClickListener() {

@@ -55,7 +55,21 @@ public class Board {
     return size*size;
 }
 
+    public void setBoardCell(int ii, int jj, int player) {
+        board[ii][jj].setPlayerID(player);
+    }
+
     public BoardCell getBoardCell(int ii, int jj) { return board[ii][jj]; }
+
+    public int[][] getBoard() {
+        int[][] flatBoard = new int[size][size];
+        for (int xx = 0; xx < size; xx++) {
+            for (int yy = 0; yy < size; yy++) {
+                flatBoard[yy][xx] = getBoardCell(yy,xx).getPlayerID();
+            }
+        }
+        return flatBoard;
+    }
 
     public void reset() {
         for (int ii = 0; ii < size; ii++) {

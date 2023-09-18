@@ -1,12 +1,15 @@
 package com.example.tictactoe;
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.Arrays;
 
 public class BoardAdapter extends RecyclerView.Adapter<BoardCellVH> {
 
@@ -36,6 +39,8 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardCellVH> {
 
                 single.setMarkerId(R.drawable.cross);
                 holder.boardButton.setImageResource(R.drawable.cross);
+                data.setBoardCell(position % data.getSize(),position / data.getSize(), 1);
+                Log.d("TAG", (Arrays.deepToString(data.getBoard())));
             }
         });
     }
