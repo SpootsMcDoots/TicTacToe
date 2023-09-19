@@ -50,8 +50,8 @@ public class BoardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         rootView = inflater.inflate(R.layout.fragment_board, container, false);
+
         GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
 
@@ -84,27 +84,4 @@ public class BoardFragment extends Fragment {
         return rootView;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
-        RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), gameDVM.getBoardSize(), GridLayoutManager.VERTICAL, false);
-        rv.setLayoutManager(gridLayoutManager);
-        BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard());
-        rv.setAdapter(adapter);
-        return;
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
-        RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), gameDVM.getBoardSize(), GridLayoutManager.VERTICAL, false);
-        rv.setLayoutManager(gridLayoutManager);
-        BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard());
-        rv.setAdapter(adapter);
-        return;
-    }
 }
