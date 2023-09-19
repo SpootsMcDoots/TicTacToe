@@ -16,12 +16,15 @@ public class MainActivity extends AppCompatActivity {
     public MenuFragment menuFragment = new MenuFragment();
     public SettingsFragment settingsFragment = new SettingsFragment();
     public BoardFragment boardFragment = new BoardFragment();
+
+    public FragmentManager fm = getSupportFragmentManager();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FrameLayout menuFrame = findViewById(R.id.menus_container);
-        FrameLayout boardFrame = findViewById(R.id.board_container);
+        FrameLayout boardFrame = findViewById(R.id.menus_container);
         AppData mainActivityDVM = new ViewModelProvider(this).get(AppData.class);
 
         loadMenuFragment();
@@ -48,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadMenuFragment() {
-        FragmentManager fm = getSupportFragmentManager();
         Fragment frag = fm.findFragmentById(R.id.menus_container);
         if(frag == null) {
             fm.beginTransaction().add(R.id.menus_container, menuFragment).commit();
@@ -59,18 +61,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadBoardFragment() {
-        FragmentManager fm = getSupportFragmentManager();
-        Fragment frag = fm.findFragmentById(R.id.board_container);
+        Fragment frag = fm.findFragmentById(R.id.menus_container);
         if(frag == null) {
-            fm.beginTransaction().add(R.id.board_container, boardFragment).commit();
+            fm.beginTransaction().add(R.id.menus_container, boardFragment).commit();
         }
         else{
-            fm.beginTransaction().replace(R.id.board_container, boardFragment).commit();
+            fm.beginTransaction().replace(R.id.menus_container, boardFragment).commit();
         }
     }
 
     private void loadSettingsFragment() {
-        FragmentManager fm = getSupportFragmentManager();
         Fragment frag = fm.findFragmentById(R.id.menus_container);
         if(frag == null) {
             fm.beginTransaction().add(R.id.menus_container, settingsFragment).commit();
