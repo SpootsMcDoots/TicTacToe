@@ -58,7 +58,7 @@ public class Profile {
         float drawPercentage = (float) draw / total;
         float losePercentage = (float) loseCount / total;
         float winPercentage = (float) winCount / total;
-//NOTE: return an array in here
+        //NOTE: return an array in here
         return new float[]{drawPercentage, losePercentage, winPercentage};
     }
 

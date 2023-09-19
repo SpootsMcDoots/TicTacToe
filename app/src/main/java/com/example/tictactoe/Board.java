@@ -38,13 +38,9 @@ public class Board {
         board = generateBoard();
     }
 
-    public void regenerate()
-   {
-       board = generateBoard();
-   }
-
     public void setSize(int newSize) {
         size = newSize;
+        board = generateBoard();
     }
 
     public int getSize() {
