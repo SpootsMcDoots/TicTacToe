@@ -64,8 +64,8 @@ public class BoardFragment extends Fragment {
         rv.setAdapter(adapter);
 
         if(mainActivityDVM.playersIsEmpty()) {
-           gameDVM.setPlayer1(new Profile(1, R.drawable.cross));
-           gameDVM.setPlayer2(new Profile(1, R.drawable.naught));
+           gameDVM.setPlayer1(new Profile(R.drawable.cross, "Player 1"));
+           gameDVM.setPlayer2(new Profile(R.drawable.naught, "Player 2"));
            mainActivityDVM.players.getValue().add(gameDVM.getPlayer1());
            mainActivityDVM.players.getValue().add(gameDVM.getPlayer2());
        }
