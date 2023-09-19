@@ -64,6 +64,7 @@ public class SettingsFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
+        GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
 
 
         Button[] boardSizes =   {   rootView.findViewById(R.id.size3x3),
@@ -83,40 +84,40 @@ public class SettingsFragment extends Fragment {
         Button back = rootView.findViewById(R.id.backButton);
 
         //BoardSizeMonitor
-        mainActivityDVM.boardSize.observe(getViewLifecycleOwner(), new Observer<Integer>() {
+        gameDVM.boardSize.observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             //Monitor for changes, if the buttons are pressed, change the drawable to reflect that to the user
             public void onChanged(Integer integer) {
                 for (Button button : boardSizes) {
                     button.setBackgroundResource(R.drawable.default_button);
                 }
-                if (mainActivityDVM.getBoardSize() == 3) {
+                if (gameDVM.getBoardSize() == 3) {
                     boardSizes[0].setBackgroundResource(R.drawable.default_button_pressed);
                 }
-                if (mainActivityDVM.getBoardSize() == 4) {
+                if (gameDVM.getBoardSize() == 4) {
                     boardSizes[1].setBackgroundResource(R.drawable.default_button_pressed);
                 }
-                if (mainActivityDVM.getBoardSize() == 5) {
+                if (gameDVM.getBoardSize() == 5) {
                     boardSizes[2].setBackgroundResource(R.drawable.default_button_pressed);
 
                 }
             }
         });
         //WinConMonitor
-        mainActivityDVM.winCon.observe(getViewLifecycleOwner(), new Observer<Integer>() {
+        gameDVM.winCon.observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             //Monitor for changes, if the buttons are pressed, change the drawable to reflect that to the user
             public void onChanged(Integer integer) {
                 for (Button button : winCons) {
                     button.setBackgroundResource(R.drawable.default_button);
                 }
-                if (mainActivityDVM.getWinCon() == 3) {
+                if (gameDVM.getWinCon() == 3) {
                     winCons[0].setBackgroundResource(R.drawable.default_button_pressed);
                 }
-                if (mainActivityDVM.getWinCon() == 4) {
+                if (gameDVM.getWinCon() == 4) {
                     winCons[1].setBackgroundResource(R.drawable.default_button_pressed);
                 }
-                if (mainActivityDVM.getWinCon() == 5) {
+                if (gameDVM.getWinCon() == 5) {
                     winCons[2].setBackgroundResource(R.drawable.default_button_pressed);
                 }
             }
@@ -133,37 +134,37 @@ public class SettingsFragment extends Fragment {
         boardSizes[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivityDVM.setBoardSize(3);
+                gameDVM.setBoardSize(3);
             }
         });
         boardSizes[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivityDVM.setBoardSize(4);
+                gameDVM.setBoardSize(4);
             }
         });
         boardSizes[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivityDVM.setBoardSize(5);
+                gameDVM.setBoardSize(5);
             }
         });
         winCons[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivityDVM.setWinCon(3);
+                gameDVM.setWinCon(3);
             }
         });
         winCons[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivityDVM.setWinCon(4);
+                gameDVM.setWinCon(4);
             }
         });
         winCons[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivityDVM.setWinCon(5);
+                gameDVM.setWinCon(5);
             }
         });
         return rootView;

@@ -46,10 +46,6 @@ public class Profile {
             this.draw++;
         }
 
-    public void draw_match() {
-        this.draw++;
-    }
-
     // Return win/lose/draw percentages for the user,
     public float[] user_statistic() {
         float total = draw + loseCount + winCount;

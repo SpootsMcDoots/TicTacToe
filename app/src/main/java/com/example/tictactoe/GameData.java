@@ -8,21 +8,17 @@ import java.util.ArrayList;
 public class GameData extends ViewModel{
     public MutableLiveData<Profile> player1;
     public MutableLiveData<Profile> player2;
-    public MutableLiveData<ArrayList> players;
     public MutableLiveData<Profile> turnPlayer;
 
-
+    public static MutableLiveData<Integer> boardSize;
+    public static MutableLiveData<Integer> winCon;
     public static MutableLiveData<Board> board;
 
     public GameData() {
         player1 = new MediatorLiveData<Profile>();
         player2 = new MediatorLiveData<Profile>();
-        players = new MediatorLiveData<ArrayList>();
         turnPlayer = new MediatorLiveData<Profile>();
         ArrayList<Profile> newList = new ArrayList<Profile>();
-        players.setValue(newList);
-        ArrayList<Profile> newList = new ArrayList<Profile>();
-        players.setValue(newList);
 
         boardSize = new MediatorLiveData<Integer>();
         boardSize.setValue(3);
@@ -31,7 +27,7 @@ public class GameData extends ViewModel{
         winCon.setValue(3);
 
         board = new MediatorLiveData<Board>();
-        board.setValue(new Board(boardSize.getValue()));
+        board.setValue(new Board(boardSize.getValue(), winCon.getValue()));
     }
 
     public void setPlayer1(Profile p1) { player1.setValue(p1); }
@@ -43,9 +39,6 @@ public class GameData extends ViewModel{
     public Profile getPlayer2() { return player2.getValue(); }
 
     //public Profile getPlayer(String username) {}
-    public boolean playersIsEmpty() {
-        return players.getValue().isEmpty();
-    }
 
     public Profile getTurnPlayer() {return turnPlayer.getValue(); }
 

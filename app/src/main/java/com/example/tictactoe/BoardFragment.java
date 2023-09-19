@@ -70,8 +70,9 @@ public class BoardFragment extends Fragment {
            gameDVM.players.getValue().add(gameDVM.getPlayer2());
        }
        gameDVM.newGame();
-       Log.d("TAG", (Arrays.deepToString(board.getBoard())));
-       Button back = rootView.findViewById(R.id.backButton);
+
+        //TODO
+       //Log.d("TAG", (Arrays.deepToString(board.getBoard())));
 
        back.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -92,7 +93,18 @@ public class BoardFragment extends Fragment {
         rv.setLayoutManager(gridLayoutManager);
         BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard());
         rv.setAdapter(adapter);
+        return;
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
+        RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), gameDVM.getBoardSize(), GridLayoutManager.VERTICAL, false);
+        rv.setLayoutManager(gridLayoutManager);
+        BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard());
+        rv.setAdapter(adapter);
         return;
     }
 }
