@@ -61,6 +61,8 @@ public class AppData extends ViewModel {
     public Profile getPlayer1() { return player1.getValue(); }
 
     public Profile getPlayer2() { return player2.getValue(); }
+    //store the array from the profile
+    public void addPlayer(Profile player) {players.add(player); }
 
     //public Profile getPlayer(String username) {}
     public boolean playersIsEmpty() {
