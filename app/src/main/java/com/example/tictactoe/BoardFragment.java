@@ -63,11 +63,11 @@ public class BoardFragment extends Fragment {
         BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard());
         rv.setAdapter(adapter);
 
-        if(gameDVM.playersIsEmpty()) {
+        if(mainActivityDVM.playersIsEmpty()) {
            gameDVM.setPlayer1(new Profile(1, R.drawable.cross));
            gameDVM.setPlayer2(new Profile(1, R.drawable.naught));
-           gameDVM.players.getValue().add(gameDVM.getPlayer1());
-           gameDVM.players.getValue().add(gameDVM.getPlayer2());
+           mainActivityDVM.players.getValue().add(gameDVM.getPlayer1());
+           mainActivityDVM.players.getValue().add(gameDVM.getPlayer2());
        }
        gameDVM.newGame();
 
@@ -97,8 +97,8 @@ public class BoardFragment extends Fragment {
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onStop() {
+        super.onStop();
         GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
         RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), gameDVM.getBoardSize(), GridLayoutManager.VERTICAL, false);

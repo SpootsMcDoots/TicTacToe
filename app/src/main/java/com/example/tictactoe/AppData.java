@@ -10,14 +10,14 @@ public class AppData extends ViewModel {
     public MutableLiveData<Integer> menuClicked;
 
     //Settings Menu Data
-
-    public ArrayList<Profile> players;
+    public MutableLiveData<ArrayList> players;
 
     //Initialise to defaults
     public AppData() {
         menuClicked = new MediatorLiveData<Integer>();
         menuClicked.setValue(0);
-        players = new ArrayList<Profile>();
+        players = new MutableLiveData<ArrayList>();
+        players.setValue(new ArrayList<Profile>());
     }
 
     //Getters and setters
@@ -29,10 +29,10 @@ public class AppData extends ViewModel {
     }
 
     //store the array from the profile
-    public void addPlayer(Profile player) {players.add(player); }
+    public void addPlayer(Profile player) {players.getValue().add(player); }
 
     //public Profile getPlayer(String username) {}
     public boolean playersIsEmpty() {
-        return players.isEmpty();
+        return players.getValue().isEmpty();
     }
 }
