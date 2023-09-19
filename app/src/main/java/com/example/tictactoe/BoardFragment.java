@@ -7,11 +7,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,23 +70,22 @@ public class BoardFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_board, container, false);
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
 
-        Board board = Board.get();
+        Board board = new Board(mainActivityDVM.getBoardSize(), mainActivityDVM.getWinCon());
 
         RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), board.getSize(), GridLayoutManager.HORIZONTAL, false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), board.getSize(), GridLayoutManager.VERTICAL, false);
         rv.setLayoutManager(gridLayoutManager);
-
         BoardAdapter adapter = new BoardAdapter(board);
         rv.setAdapter(adapter);
 
-       if(mainActivityDVM.playersIsEmpty()) {
-           mainActivityDVM.setPlayer1(new Profile(1, R.drawable.cross));
-           mainActivityDVM.setPlayer2(new Profile(1, R.drawable.naught));
-           mainActivityDVM.players.add(mainActivityDVM.getPlayer1());
-           mainActivityDVM.players.add(mainActivityDVM.getPlayer2());
+       if(gameDVM.playersIsEmpty()) {
+           gameDVM.setPlayer1(new Profile(1, R.drawable.cross));
+           gameDVM.setPlayer2(new Profile(1, R.drawable.naught));
+           gameDVM.players.getValue().add(gameDVM.getPlayer1());
+           gameDVM.players.getValue().add(gameDVM.getPlayer2());
        }
-
+       gameDVM.newGame();
+       Log.d("TAG", (Arrays.deepToString(board.getBoard())));
        Button back = rootView.findViewById(R.id.backButton);
 
        back.setOnClickListener(new View.OnClickListener() {
