@@ -36,8 +36,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardCellVH> {
         holder.boardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                single.setMarkerId(R.drawable.cross);
                 holder.boardButton.setImageResource(R.drawable.cross);
                 data.setBoardCell(position / data.getSize(),position % data.getSize(), 1);
                 Log.d("TAG", (Arrays.deepToString(data.getBoard())));

@@ -46,15 +46,19 @@ public class Profile {
             this.draw++;
         }
 
-        // Return win/lose/draw percentages for the user,
-        public float[] user_statistic () {
-            float total = draw + loseCount + winCount;
-            float drawPercentage = (float) draw / total;
-            float losePercentage = (float) loseCount / total;
-            float winPercentage = (float) winCount / total;
-//NOTE: return an array in here
-            return new float[]{drawPercentage, losePercentage, winPercentage};
-        }
+    public void draw_match() {
+        this.draw++;
+    }
+
+    // Return win/lose/draw percentages for the user,
+    public float[] user_statistic() {
+        float total = draw + loseCount + winCount;
+        float drawPercentage = (float) draw / total;
+        float losePercentage = (float) loseCount / total;
+        float winPercentage = (float) winCount / total;
+        //NOTE: return an array in here
+        return new float[]{drawPercentage, losePercentage, winPercentage};
+    }
 
         public int win_number () {
             return winCount;

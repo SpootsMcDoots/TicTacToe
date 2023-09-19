@@ -65,6 +65,7 @@ public class SettingsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
 
+
         Button[] boardSizes =   {   rootView.findViewById(R.id.size3x3),
                                     rootView.findViewById(R.id.size4x4),
                                     rootView.findViewById(R.id.size5x5)};

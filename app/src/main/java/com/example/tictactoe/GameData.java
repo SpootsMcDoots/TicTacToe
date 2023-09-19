@@ -12,6 +12,8 @@ public class GameData extends ViewModel{
     public MutableLiveData<Profile> turnPlayer;
 
 
+    public static MutableLiveData<Board> board;
+
     public GameData() {
         player1 = new MediatorLiveData<Profile>();
         player2 = new MediatorLiveData<Profile>();
@@ -19,6 +21,17 @@ public class GameData extends ViewModel{
         turnPlayer = new MediatorLiveData<Profile>();
         ArrayList<Profile> newList = new ArrayList<Profile>();
         players.setValue(newList);
+        ArrayList<Profile> newList = new ArrayList<Profile>();
+        players.setValue(newList);
+
+        boardSize = new MediatorLiveData<Integer>();
+        boardSize.setValue(3);
+
+        winCon = new MediatorLiveData<Integer>();
+        winCon.setValue(3);
+
+        board = new MediatorLiveData<Board>();
+        board.setValue(new Board(boardSize.getValue()));
     }
 
     public void setPlayer1(Profile p1) { player1.setValue(p1); }
@@ -47,4 +60,16 @@ public class GameData extends ViewModel{
         turnPlayer.setValue(player1.getValue());
     }
 
+    public static void setBoardSize(int value) {
+        boardSize.setValue(value);
+        board.getValue().setSize(value);
+    }
+    public static void setWinCon(int value) { winCon.setValue(value); }
+
+    public Board getBoard() {
+        return board.getValue();
+    }
+
+    public int getBoardSize() { return boardSize.getValue(); }
+    public int getWinCon() { return winCon.getValue(); }
 }
