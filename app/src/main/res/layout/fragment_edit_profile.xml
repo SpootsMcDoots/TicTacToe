@@ -1,77 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/currentProfileLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2">
 
-    <!--
-    <ImageView
-        android:id="@+id/currentAvatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@tools:sample/avatars"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/avatarLayout"
-        app:layout_constraintEnd_toStartOf="@id/profileName"
-        app:layout_constraintBottom_toTopOf="@id/avatarLayout"/>
+        <ImageView
+            android:id="@+id/currentAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@tools:sample/avatars"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/currentProfileLayout"
+            app:layout_constraintEnd_toStartOf="@id/profileName"
+            app:layout_constraintBottom_toBottomOf="@id/currentProfileLayout"/>
 
-    <EditText
-        android:id="@+id/profileName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name"
-        app:layout_constraintStart_toEndOf="@id/currentAvatar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="avatarLayout"/>
+        <EditText
+            android:id="@+id/profileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Name"
+            app:layout_constraintStart_toEndOf="@id/currentAvatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/currentProfileLayout"
+            app:layout_constraintBottom_toBottomOf="@id/currentProfileLayout"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/avatarLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_weight="1">
 
         <ImageButton
-            android:id="@+id/imageButton6"
+            android:id="@+id/Avatar1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/btn_star" />
+            android:src="@android:drawable/btn_star"
+            app:layout_constraintTop_toTopOf="@id/avatarLayout"
+            app:layout_constraintStart_toStartOf="@id/avatarLayout"
+            app:layout_constraintEnd_toStartOf="@id/Avatar2"
+            app:layout_constraintBottom_toTopOf="@id/Avatar4"/>
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/Avatar2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/btn_star" />
+            android:src="@android:drawable/btn_star"
+            app:layout_constraintTop_toTopOf="@id/avatarLayout"
+            app:layout_constraintStart_toEndOf="@id/Avatar1"
+            app:layout_constraintEnd_toStartOf="@id/Avatar3"
+            app:layout_constraintBottom_toTopOf="@id/Avatar5"/>
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/Avatar3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/btn_star" />
+            android:src="@android:drawable/btn_star"
+            app:layout_constraintTop_toTopOf="@id/avatarLayout"
+            app:layout_constraintStart_toEndOf="@id/Avatar2"
+            app:layout_constraintEnd_toEndOf="@id/avatarLayout"
+            app:layout_constraintBottom_toTopOf="@id/Avatar6"/>
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/Avatar4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/btn_star" />
+            android:src="@android:drawable/btn_star"
+            app:layout_constraintTop_toBottomOf="@id/Avatar1"
+            app:layout_constraintStart_toStartOf="@id/avatarLayout"
+            app:layout_constraintEnd_toStartOf="@id/Avatar5"
+            app:layout_constraintBottom_toBottomOf="@id/avatarLayout"/>
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/Avatar5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/btn_star" />
+            android:src="@android:drawable/btn_star"
+            app:layout_constraintTop_toBottomOf="@id/Avatar2"
+            app:layout_constraintStart_toEndOf="@id/Avatar4"
+            app:layout_constraintEnd_toStartOf="@id/Avatar6"
+            app:layout_constraintBottom_toBottomOf="@id/avatarLayout"/>
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/Avatar6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/btn_star" />
+            android:src="@android:drawable/btn_star"
+            app:layout_constraintTop_toBottomOf="@id/Avatar3"
+            app:layout_constraintStart_toEndOf="@id/Avatar5"
+            app:layout_constraintEnd_toEndOf="@id/avatarLayout"
+            app:layout_constraintBottom_toBottomOf="@id/avatarLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-    -->
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
