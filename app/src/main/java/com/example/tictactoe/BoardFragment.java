@@ -64,31 +64,6 @@ public class BoardFragment extends Fragment {
         Chronometer timer = rootView.findViewById(R.id.timer);
         TextView playerIndicator = rootView.findViewById(R.id.tv_current_player);
 
-        //Countdown timer
-        TextView countdown = rootView.findViewById(R.id.countdown);
-        long duration = TimeUnit.MINUTES.toMillis(1);
-
-        new CountDownTimer(duration, 1000) {
-            @Override
-            public void onTick(long ll) {
-                //Converting milliseconds to minutes and seconds
-                //Ref youtube: https://www.youtube.com/watch?v=T_wSEnqGPdo
-                String sDuration = String.format(Locale.ENGLISH, "%02d : %02d"
-                        , TimeUnit.MILLISECONDS.toMinutes(ll), TimeUnit.MILLISECONDS.toSeconds(ll)
-                        - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(ll)));
-
-                //set this to text view
-                countdown.setText(sDuration);
-            }
-
-            //TODO: use this to switch turns automatically
-            @Override
-            public void onFinish() {
-                //TODO: Toast is for small pop up info, use this for win/draw/invalid notifications
-                Toast.makeText(getActivity(), "Turn has ended.", Toast.LENGTH_LONG).show();
-            }
-        }.start();
-
         RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), gameDVM.getBoardSize(), GridLayoutManager.VERTICAL, false);
         rv.setLayoutManager(gridLayoutManager);
@@ -103,6 +78,8 @@ public class BoardFragment extends Fragment {
            Log.d("TAG", Integer.toString(gameDVM.getPlayer1().getProfileID()) + Integer.toString(gameDVM.getPlayer2().getProfileID()));
         }
         gameDVM.newGame();
+        //Use this to start the countdown
+        startTimer();
         //Start the count up timer to track total game duration
         timer.start();
 
@@ -119,6 +96,33 @@ public class BoardFragment extends Fragment {
        });
 
         return rootView;
+    }
+
+    //start timer function
+    void startTimer() {
+        CountDownTimer cTimer = null;
+        //Countdown timer
+        TextView countdown = rootView.findViewById(R.id.countdown);
+        long duration = TimeUnit.MINUTES.toMillis(1);
+        cTimer = new CountDownTimer(duration, 1000) {
+            @Override
+            public void onTick(long ll) {
+                //Converting milliseconds to minutes and seconds
+                //Ref youtube: https://www.youtube.com/watch?v=T_wSEnqGPdo
+                String sDuration = String.format(Locale.ENGLISH, "%02d : %02d"
+                        , TimeUnit.MILLISECONDS.toMinutes(ll), TimeUnit.MILLISECONDS.toSeconds(ll)
+                                - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(ll)));
+
+                //set this to text view
+                countdown.setText(sDuration);
+            }
+            @Override
+            public void onFinish() {
+                //TODO: Toast is for small pop up info, use this for win/draw/invalid notifications
+                Toast.makeText(getActivity(), "Turn has ended.", Toast.LENGTH_LONG).show();
+            }
+        };
+        cTimer.start();
     }
 
 }
