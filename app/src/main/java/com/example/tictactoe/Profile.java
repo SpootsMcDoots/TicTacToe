@@ -1,5 +1,8 @@
 package com.example.tictactoe;
 
+import android.util.Log;
+
+import androidx.lifecycle.ViewModelProvider;
 
 /**
  * This holds the information for user profiles
@@ -13,15 +16,13 @@ public class Profile {
     private int avatarId = 0;
 
 
-    public Profile(int newAvatarId, String newUsername) {
+    public Profile(int newProfileID, int newAvatarId, String newUsername) {
+        setProfileID(newProfileID);
         setAvatarId(newAvatarId);
         setUsername(newUsername);
-        setProfileID();
     }
     public int getProfileID() {return profileID;}
-    public void setProfileID() {
-        AppData mainActivityDVM = new AppData();
-        profileID = mainActivityDVM.getProfileCount();}
+    public void setProfileID(int newProfileID) { profileID = newProfileID;}
     public int getAvatarId() {return avatarId;}
     public void setAvatarId (int newDrawableId) {avatarId = newDrawableId;}
     public String getUsername () {return username;}

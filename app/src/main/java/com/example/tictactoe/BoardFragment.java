@@ -67,21 +67,21 @@ public class BoardFragment extends Fragment {
         RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), gameDVM.getBoardSize(), GridLayoutManager.VERTICAL, false);
         rv.setLayoutManager(gridLayoutManager);
-        BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard());
+        BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard(), mainActivityDVM, gameDVM);
         rv.setAdapter(adapter);
 
+        Log.d("TAG", Integer.toString(mainActivityDVM.getProfileCount()));
         if(mainActivityDVM.playersIsEmpty()) {
-           gameDVM.setPlayer1(new Profile(R.drawable.cross, "Player 1"));
-           gameDVM.setPlayer2(new Profile(R.drawable.naught, "Player 2"));
-           mainActivityDVM.players.getValue().add(gameDVM.getPlayer1());
-           mainActivityDVM.players.getValue().add(gameDVM.getPlayer2());
-           Log.d("TAG", Integer.toString(gameDVM.getPlayer1().getProfileID()) + Integer.toString(gameDVM.getPlayer2().getProfileID()));
-        }
-        gameDVM.newGame();
-        //Use this to start the countdown
-        startTimer();
-        //Start the count up timer to track total game duration
-        timer.start();
+            mainActivityDVM.addPlayer(new Profile(mainActivityDVM.getProfileCount()+1,R.drawable.cross,"Player1"));
+            mainActivityDVM.addPlayer(new Profile(mainActivityDVM.getProfileCount()+1,R.drawable.naught,"Player2"));
+            Log.d("TAG", mainActivityDVM.getProfile(0).getUsername());
+            Log.d("TAG", mainActivityDVM.getProfile(1).getUsername());
+            gameDVM.setPlayer1(mainActivityDVM.getProfile(0));
+            gameDVM.setPlayer2(mainActivityDVM.getProfile(1));
+            Log.d("TAG", Integer.toString(gameDVM.getPlayer1().getProfileID()) + Integer.toString(gameDVM.getPlayer2().getProfileID()));
+       }
+       gameDVM.newGame();
+	   timer.start();
 
         //TODO: use these in the switch turn methods!
         //This displays the current players turn.
