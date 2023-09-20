@@ -46,6 +46,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardCellVH> {
                 gameDVM.endTurn();
             }
         });
+
     }
 
     @Override

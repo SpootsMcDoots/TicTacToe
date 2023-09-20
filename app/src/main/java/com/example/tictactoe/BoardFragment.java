@@ -73,10 +73,12 @@ public class BoardFragment extends Fragment {
         rv.setLayoutManager(gridLayoutManager);
         BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard(), mainActivityDVM, gameDVM);
         rv.setAdapter(adapter);
-
-        //TODO CHANGE THIS
-        gameDVM.setPlayer1(mainActivityDVM.getProfile(0));
-        gameDVM.setPlayer2(mainActivityDVM.getProfile(1));
+        if(gameDVM.getPlayer1() == null){
+            gameDVM.setPlayer1(mainActivityDVM.getProfile(0));
+        }
+        if(gameDVM.getPlayer2() == null){
+            gameDVM.setPlayer2(mainActivityDVM.getProfile(1));
+        }
 
         gameDVM.newGame();
 	    timer.start();

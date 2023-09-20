@@ -3,6 +3,7 @@ package com.example.tictactoe;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -65,15 +66,41 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
+        GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
         RecyclerView rv = view.findViewById(R.id.profileRecycleView);
         Button back = view.findViewById(R.id.backButton);
+        Button add = view.findViewById(R.id.addButton);
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false));
-        profileAdapter pAdapter = new profileAdapter(getActivity(), mainActivityDVM.getPlayers(),mainActivityDVM);
+        profileAdapter pAdapter = new profileAdapter(getActivity(), mainActivityDVM.getPlayers(),mainActivityDVM, gameDVM);
         rv.setAdapter(pAdapter);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivityDVM.setMenuClicked(0);//
+                mainActivityDVM.setMenuClicked(0);
+            }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDVM.addPlayer(new Profile(mainActivityDVM.getProfileCount()+1,R.drawable.cross,"New Profile"));
+                mainActivityDVM.setCurrentEditProfile(mainActivityDVM.getProfile(mainActivityDVM.getProfileCount()-1));
+                mainActivityDVM.setMenuClicked(5);
+            }
+        });
+        gameDVM.player1.observe(getViewLifecycleOwner(), new Observer<Profile>() {
+            @Override
+            //Monitor for changes, if the buttons are pressed, change the drawable to reflect that to the user
+            public void onChanged(Profile profile) {
+                profileAdapter pAdapter = new profileAdapter(getActivity(), mainActivityDVM.getPlayers(),mainActivityDVM, gameDVM);
+                rv.setAdapter(pAdapter);
+            }
+        });
+        gameDVM.player2.observe(getViewLifecycleOwner(), new Observer<Profile>() {
+            @Override
+            //Monitor for changes, if the buttons are pressed, change the drawable to reflect that to the user
+            public void onChanged(Profile profile) {
+                profileAdapter pAdapter = new profileAdapter(getActivity(), mainActivityDVM.getPlayers(),mainActivityDVM, gameDVM);
+                rv.setAdapter(pAdapter);
             }
         });
         return view;

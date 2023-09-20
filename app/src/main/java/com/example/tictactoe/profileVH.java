@@ -13,17 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 public class profileVH extends RecyclerView.ViewHolder {
     public TextView textView;
     public Button button;
+    public Button select;
     public ImageView profileAvatar;
-    public profileVH(@NonNull View itemView, ViewGroup parent,int size) {
+    public profileVH(@NonNull View itemView) {
         super(itemView);
         textView = itemView.findViewById(R.id.textView);
         button = itemView.findViewById(R.id.editbutton);
-
+        select = itemView.findViewById(R.id.selectbutton);
         profileAvatar = itemView.findViewById(R.id.avatarProfile);
-        int hSize = parent.getMeasuredHeight() /size;
-        ViewGroup.LayoutParams lp = itemView.getLayoutParams();
-        lp.height = hSize;
 
-        //lp.width = wSize;
     }
 }
