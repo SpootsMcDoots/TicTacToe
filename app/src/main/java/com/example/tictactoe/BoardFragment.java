@@ -3,6 +3,7 @@ package com.example.tictactoe;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,6 +65,7 @@ public class BoardFragment extends Fragment {
         Button back = rootView.findViewById(R.id.backButton);
         Chronometer timer = rootView.findViewById(R.id.timer);
         TextView playerIndicator = rootView.findViewById(R.id.tv_current_player);
+        ImageView playerAvatar = rootView.findViewById(R.id.avatar_current_player);
 
         RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), gameDVM.getBoardSize(), GridLayoutManager.VERTICAL, false);
@@ -83,10 +86,12 @@ public class BoardFragment extends Fragment {
        gameDVM.newGame();
 	   timer.start();
 
-        //TODO: use these in the switch turn methods!
-        //This displays the current players turn.
-        playerIndicator.setText(gameDVM.player1.getValue().getUsername());
-        //TODO: Can probably display the profile pic in an imageview as well
+        gameDVM.turnPlayer.observe(getActivity(), new Observer<Profile>() {
+            public void onChanged(Profile currentPlayer) {
+                playerIndicator.setText(gameDVM.turnPlayer.getValue().getUsername());
+                playerAvatar.setImageResource(gameDVM.turnPlayer.getValue().getAvatarId());
+            }
+        });
 
        back.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -97,6 +102,7 @@ public class BoardFragment extends Fragment {
 
         return rootView;
     }
+
 
     //start timer function
     void startTimer() {
