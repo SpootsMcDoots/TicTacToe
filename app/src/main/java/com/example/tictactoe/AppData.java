@@ -7,10 +7,10 @@ import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
 
 public class AppData extends ViewModel {
-    public MutableLiveData<Integer> menuClicked;
+    public static MutableLiveData<Integer> menuClicked;
 
     //Settings Menu Data
-    public MutableLiveData<ArrayList> players;
+    public static MutableLiveData<ArrayList> players;
 
     //Initialise to defaults
     public AppData() {
@@ -31,10 +31,17 @@ public class AppData extends ViewModel {
     public MutableLiveData<ArrayList> getPlayers() { return players;}
 
     //store the array from the profile
-    public void addPlayer(Profile player) {players.getValue().add(player); }
+    public static void addPlayer(Profile player) {players.getValue().add(player); }
 
-    //public Profile getPlayer(String username) {}
+    public static int getProfileCount() {return players.getValue().size();}
+
+    public Profile getProfile(int ID) {return (Profile)players.getValue().get(ID);}
+
     public boolean playersIsEmpty() {
-        return players.getValue().isEmpty();
+        boolean result = false;
+        if (players.getValue().size() < 2) {
+            result = true;
+        }
+        return result;
     }
 }
