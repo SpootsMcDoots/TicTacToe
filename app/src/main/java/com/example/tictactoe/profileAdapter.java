@@ -21,7 +21,6 @@ public class profileAdapter extends RecyclerView.Adapter<profileVH>{
     public profileAdapter(Context context, ArrayList<Profile> profile){
         this.context = context;
         this.profile = profile;
-        Log.d("tag",profile.get(0).getUsername());
         }
         @NonNull
         @Override
