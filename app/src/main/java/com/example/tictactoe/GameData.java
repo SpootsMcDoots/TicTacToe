@@ -1,5 +1,6 @@
 package com.example.tictactoe;
 import android.util.Log;
+import android.support.v4.os.IResultReceiver;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -15,6 +16,7 @@ public class GameData extends ViewModel{
     public static MutableLiveData<Integer> boardSize;
     public static MutableLiveData<Integer> winCon;
     public static MutableLiveData<Board> board;
+    public static MutableLiveData<Integer> numMoves;
 
     public GameData() {
         player1 = new MediatorLiveData<Profile>();
@@ -30,6 +32,8 @@ public class GameData extends ViewModel{
 
         board = new MediatorLiveData<Board>();
         board.setValue(new Board(boardSize.getValue(), winCon.getValue()));
+        numMoves = new MediatorLiveData<Integer>();
+        numMoves.setValue(0);
     }
 
     public void setPlayer1(Profile p1) { player1.setValue(p1); }
@@ -45,6 +49,7 @@ public class GameData extends ViewModel{
     public Profile getTurnPlayer() {return turnPlayer.getValue(); }
 
     public void endTurn() {
+        numMoves.setValue(numMoves.getValue()+1);
         if (turnPlayer.getValue() == player1.getValue()) {
             turnPlayer.setValue(player2.getValue());
         }
@@ -53,6 +58,7 @@ public class GameData extends ViewModel{
 
     public void newGame() {
         turnPlayer.setValue(player1.getValue());
+        numMoves.setValue(0);
     }
 
     public static void setBoardSize(int value) {
@@ -67,4 +73,12 @@ public class GameData extends ViewModel{
 
     public int getBoardSize() { return boardSize.getValue(); }
     public int getWinCon() { return winCon.getValue(); }
+    public boolean checkDraw() {
+        boolean result = false;
+        if(numMoves.getValue() == boardSize.getValue()*boardSize.getValue()){
+            result = true;
+        }
+        return result;
+    }
+
 }

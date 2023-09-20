@@ -56,11 +56,13 @@ public class Board {
     return size*size;
 }
 
-    public void setBoardCell(int ii, int jj, int player) {
+    public boolean setBoardCell(int ii, int jj, int player) {
+        boolean result = false;
         board[ii][jj].setPlayerID(player);
         if(checkWinner(player)){
-            Log.d("TAG", "WINNER WINNER");
+            result = true;
         }
+        return result;
     }
 
     public BoardCell getBoardCell(int ii, int jj) { return board[ii][jj]; }
@@ -160,7 +162,6 @@ public class Board {
                 }
             }
         }
-
 
         return result;
     }

@@ -107,6 +107,19 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
+        android:id="@+id/resetButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
+        android:text="Reset"
+        android:textColor="@color/black"
+        android:layout_margin="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/backButton"
+
+        app:layout_constraintBottom_toBottomOf="parent">
+    </Button>
+    <Button
         android:id="@+id/backButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -114,7 +127,7 @@
         android:text="Quit"
         android:textColor="@color/black"
         android:layout_margin="4dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/resetButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
     </Button>
