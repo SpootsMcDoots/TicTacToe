@@ -73,7 +73,7 @@ public class ProfileFragment extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivityDVM.setMenuClicked(0);
+                mainActivityDVM.setMenuClicked(0);//
             }
         });
         return view;
