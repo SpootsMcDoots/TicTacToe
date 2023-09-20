@@ -99,6 +99,7 @@ public class BoardFragment extends Fragment {
        back.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               finalCTimer.cancel();
                adapter.resetBoard();
                mainActivityDVM.setMenuClicked(0);
             }
@@ -139,6 +140,7 @@ public class BoardFragment extends Fragment {
             public void onFinish() {
                 gameDVM.endTurn();
                 appData.setMenuClicked(6);
+                cancel();
             }
         };
         return cTimer;
