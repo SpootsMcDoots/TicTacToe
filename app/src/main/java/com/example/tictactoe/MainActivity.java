@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public SettingsFragment settingsFragment = new SettingsFragment();
     public BoardFragment boardFragment = new BoardFragment();
     public ProfileFragment profileFragment= new ProfileFragment();
-
+    public editprofile editprofileFragment = new editprofile();
     public FragmentManager fm = getSupportFragmentManager();
 
     @Override
@@ -59,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
 //                if (mainActivityDVM.getMenuClicked() == 4){
 //                    loadProfileFragment();
 //                }
+                if (mainActivityDVM.getMenuClicked() == 5){
+                    loadeditprofileFragment();
+                }
+
 
             }
         });
@@ -73,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             fm.beginTransaction().replace(R.id.menus_container, menuFragment).commit();
         }
     }
+
 
     private void loadBoardFragment() {
         Fragment frag = fm.findFragmentById(R.id.menus_container);
@@ -102,4 +107,14 @@ public class MainActivity extends AppCompatActivity {
             fm.beginTransaction().replace(R.id.menus_container, profileFragment).commit();
         }
     }
+    private void loadeditprofileFragment() {
+        Fragment frag = fm.findFragmentById(R.id.menus_container);
+        if(frag == null) {
+            fm.beginTransaction().add(R.id.menus_container, editprofileFragment).commit();
+        }
+        else{
+            fm.beginTransaction().replace(R.id.menus_container, editprofileFragment).commit();
+        }
+    }
+
 }
