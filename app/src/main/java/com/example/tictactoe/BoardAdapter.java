@@ -14,9 +14,13 @@ import java.util.Arrays;
 public class BoardAdapter extends RecyclerView.Adapter<BoardCellVH> {
 
     Board data;
+    AppData mainActivityDVM;
+    GameData gameDVM;
 
-    public BoardAdapter(Board newData) {
+    public BoardAdapter(Board newData, AppData newMainActivityDVM, GameData newGameDVM) {
         data = newData;
+        mainActivityDVM = newMainActivityDVM;
+        gameDVM = newGameDVM;
     }
 
     @NonNull
@@ -36,9 +40,10 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardCellVH> {
         holder.boardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.boardButton.setImageResource(R.drawable.cross);
-                data.setBoardCell(position / data.getSize(),position % data.getSize(), 1);
+                holder.boardButton.setImageResource(gameDVM.getTurnPlayer().getAvatarId());
+                data.setBoardCell(position / data.getSize(),position % data.getSize(), gameDVM.getTurnPlayer().getProfileID());
                 Log.d("TAG", (Arrays.deepToString(data.getBoard())));
+                gameDVM.endTurn();
             }
         });
     }

@@ -60,13 +60,13 @@ public class BoardFragment extends Fragment {
         RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), gameDVM.getBoardSize(), GridLayoutManager.VERTICAL, false);
         rv.setLayoutManager(gridLayoutManager);
-        BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard());
+        BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard(), mainActivityDVM, gameDVM);
         rv.setAdapter(adapter);
 
         Log.d("TAG", Integer.toString(mainActivityDVM.getProfileCount()));
         if(mainActivityDVM.playersIsEmpty()) {
-            mainActivityDVM.addPlayer(new Profile(mainActivityDVM.getProfileCount(),1,"Player1"));
-            mainActivityDVM.addPlayer(new Profile(mainActivityDVM.getProfileCount(),2,"Player2"));
+            mainActivityDVM.addPlayer(new Profile(mainActivityDVM.getProfileCount()+1,R.drawable.cross,"Player1"));
+            mainActivityDVM.addPlayer(new Profile(mainActivityDVM.getProfileCount()+1,R.drawable.naught,"Player2"));
             Log.d("TAG", mainActivityDVM.getProfile(0).getUsername());
             Log.d("TAG", mainActivityDVM.getProfile(1).getUsername());
             gameDVM.setPlayer1(mainActivityDVM.getProfile(0));
