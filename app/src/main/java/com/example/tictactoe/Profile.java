@@ -31,7 +31,9 @@ public class Profile {
     public void win_match () {this.winCount++;}
     public void lost_match () {this.loseCount++;}
     public void draw_match () {this.draw++;}
-
+    public int getWin() {return winCount;}
+    public int getLose() {return loseCount;}
+    public int getDraw() {return draw;}
     // Return win/lose/draw percentages for the user,
     public float[] user_statistic() {
         float total = draw + loseCount + winCount;
@@ -41,8 +43,4 @@ public class Profile {
         //NOTE: return an array in here
         return new float[]{drawPercentage, losePercentage, winPercentage};
     }
-
-        public int win_number () {
-            return winCount;
-        }
-    }
+}
