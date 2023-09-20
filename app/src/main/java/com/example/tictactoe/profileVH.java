@@ -14,7 +14,7 @@ public class profileVH extends RecyclerView.ViewHolder {
     public profileVH(@NonNull View itemView, ViewGroup parent) {
         super(itemView);
         textView = itemView.findViewById(R.id.textView);
-        button = itemView.findViewById(R.id.button);
+        button = itemView.findViewById(R.id.editbutton);
         int hSize = parent.getMeasuredHeight() /3;
         ViewGroup.LayoutParams lp = itemView.getLayoutParams();
         lp.height = hSize;

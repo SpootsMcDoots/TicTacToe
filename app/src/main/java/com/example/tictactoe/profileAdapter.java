@@ -8,10 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class profileAdapter extends RecyclerView.Adapter<profileVH>{
@@ -26,13 +25,14 @@ public class profileAdapter extends RecyclerView.Adapter<profileVH>{
         @Override
         public profileVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-            View view = layoutInflater.inflate(R.layout.fragment_userprofile,parent,false);
+            View view = layoutInflater.inflate(R.layout.profile_list_element,parent,false);
             profileVH profileViewHolder = new profileVH(view,parent);
             return profileViewHolder;
         }
-
     @Override
     public void onBindViewHolder(@NonNull profileVH holder, int position) {
+        //TODO
+        //AppData mainAcitityDVM = new ViewModelProvider()
         Profile sdata = profile.get(position);
         holder.textView.setText(sdata.getUsername());
         holder.button.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +48,6 @@ public class profileAdapter extends RecyclerView.Adapter<profileVH>{
 
     @Override
     public int getItemCount() {
-        return 0;
+        return profile.size();
     }
 }

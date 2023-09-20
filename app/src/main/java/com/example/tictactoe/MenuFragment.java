@@ -55,10 +55,26 @@ public class MenuFragment extends Fragment {
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
         Button openSettings = view.findViewById(R.id.settings);
         Button newGame = view.findViewById(R.id.newgame);
+        //New changes for open profile and leaderbaord
+        Button openProfile = view.findViewById(R.id.profile);
+        Button openLeaderboard = view.findViewById(R.id.leaderboard);
         openSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mainActivityDVM.setMenuClicked(2);
+            }
+        });
+        openProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDVM.setMenuClicked(3);
+            }
+        });
+
+        openLeaderboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDVM.setMenuClicked(4);
             }
         });
 

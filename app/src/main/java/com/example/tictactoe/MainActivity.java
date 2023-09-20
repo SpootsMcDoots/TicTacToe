@@ -9,13 +9,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    //Testing below
+    ArrayList<Profile> profile;
+    public MainActivity(){
+        profile = new ArrayList<Profile>();
+        //TODO check the problem
+        Profile newProfile = new Profile(1,2);
+        newProfile.setUsername("a");
 
+    }
     public MenuFragment menuFragment = new MenuFragment();
     public SettingsFragment settingsFragment = new SettingsFragment();
     public BoardFragment boardFragment = new BoardFragment();
+    public ProfileFragment profileFragment= new ProfileFragment();
 
     public FragmentManager fm = getSupportFragmentManager();
 
@@ -46,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
                 if (mainActivityDVM.getMenuClicked() == 2) {
                     loadSettingsFragment();
                 }
+                if (mainActivityDVM.getMenuClicked() == 3){
+                    loadProfileFragment();
+                }
+//                if (mainActivityDVM.getMenuClicked() == 4){
+//                    loadProfileFragment();
+//                }
+
             }
         });
     }
@@ -77,6 +94,15 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             fm.beginTransaction().replace(R.id.menus_container, settingsFragment).commit();
+        }
+    }
+    private void loadProfileFragment() {
+        Fragment frag = fm.findFragmentById(R.id.menus_container);
+        if(frag == null) {
+            fm.beginTransaction().add(R.id.menus_container, profileFragment).commit();
+        }
+        else{
+            fm.beginTransaction().replace(R.id.menus_container, profileFragment).commit();
         }
     }
 }
