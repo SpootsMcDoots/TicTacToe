@@ -66,10 +66,16 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
         RecyclerView rv = view.findViewById(R.id.profileRecycleView);
+        Button back = view.findViewById(R.id.backButton);
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false));
         profileAdapter pAdapter = new profileAdapter(getActivity(), mainActivityDVM.getPlayers(),mainActivityDVM);
         rv.setAdapter(pAdapter);
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDVM.setMenuClicked(0);
+            }
+        });
         return view;
     }
 }

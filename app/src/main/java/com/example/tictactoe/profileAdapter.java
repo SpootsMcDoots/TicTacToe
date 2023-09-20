@@ -36,6 +36,7 @@ public class profileAdapter extends RecyclerView.Adapter<profileVH>{
     public void onBindViewHolder(@NonNull profileVH holder, int position) {
         Profile sdata = profile.get(position);
         holder.textView.setText(sdata.getUsername());
+        holder.profileAvatar.setImageResource(sdata.getAvatarId());
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

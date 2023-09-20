@@ -8,10 +8,11 @@
     android:background="#E0E0E0">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="16dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
+
+        android:id="@+id/avatarProfile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
