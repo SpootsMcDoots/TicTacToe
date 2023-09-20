@@ -66,10 +66,10 @@ public class ProfileFragment extends Fragment {
         //TODO AppData require before button been set
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
-        // Button openSettings = view.findViewById(R.id.editbutton);
+
         RecyclerView rv = view.findViewById(R.id.profileRecycleView);
-        rv.setLayoutManager(new LinearLayoutManager(this));//?
-        profileAdapter pAdapter = new profileAdapter(mainActivityDVM.addPlayer());
+        rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false));
+        profileAdapter pAdapter = new profileAdapter(getActivity(), mainActivityDVM.getPlayers().getValue());
         rv.setAdapter(pAdapter);
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
