@@ -16,6 +16,7 @@ public class Profile {
     public Profile(int x, int avatar) {
         setAvatarId(avatar);
     }
+    public Profile(String username){setUsername(username);}
 
         public int getAvatarId () {
             return avatarId;

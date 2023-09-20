@@ -12,11 +12,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class profileAdapter extends RecyclerView.Adapter<profileVH>{
     Context context;
     //create recycle view class for profile adapter
-    ArrayList<Profile> profile;
+    List<Profile> profile;
     public profileAdapter(Context context, ArrayList<Profile> profile){
         this.context = context;
         this.profile = profile;
