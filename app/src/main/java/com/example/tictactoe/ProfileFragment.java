@@ -69,7 +69,7 @@ public class ProfileFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false));
         profileAdapter pAdapter = new profileAdapter(getActivity(), mainActivityDVM.getPlayers(),mainActivityDVM);
         rv.setAdapter(pAdapter);
-        mainActivityDVM.setMenuClicked(5);
+
         return view;
     }
 }

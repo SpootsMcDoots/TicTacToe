@@ -1,7 +1,9 @@
 package com.example.tictactoe;
 
+import android.media.Image;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -63,15 +66,28 @@ public class editprofile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_editprofile, container, false);
-
-        Button avatar1 = view.findViewById(R.id.Avatar1);
-        Button avatar2 = view.findViewById(R.id.Avatar2);
-        Button avatar3 = view.findViewById(R.id.Avatar3);
-        Button avatar4 = view.findViewById(R.id.Avatar4);
-        Button avatar5 = view.findViewById(R.id.Avatar5);
-        Button avatar6 = view.findViewById(R.id.Avatar6);
+        AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
+        Profile target = mainActivityDVM.getCurrentEditProfile();
+        AppCompatImageButton avatar1 = view.findViewById(R.id.Avatar1);
+        AppCompatImageButton avatar2 = view.findViewById(R.id.Avatar2);
+        AppCompatImageButton avatar3 = view.findViewById(R.id.Avatar3);
+        AppCompatImageButton avatar4 = view.findViewById(R.id.Avatar4);
+        AppCompatImageButton avatar5 = view.findViewById(R.id.Avatar5);
+        AppCompatImageButton avatar6 = view.findViewById(R.id.Avatar6);
+        ImageView currentAvatar =  view.findViewById(R.id.currentAvatar);
         EditText username = view.findViewById(R.id.profileName);
+        Button back = view.findViewById(R.id.saveButton);
+        username.setText(target.getUsername());
+        currentAvatar.setImageResource(target.getAvatarId());
 
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                target.setUsername(username.getText().toString());
+                mainActivityDVM.setMenuClicked(3);
+            }
+        });
         return view;
     }
 }

@@ -6,22 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/currentProfileLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2">
+        android:layout_weight="3">
 
         <ImageView
             android:id="@+id/currentAvatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
 
-            android:src="@android:color/transparent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/currentProfileLayout"
+            app:srcCompat="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@id/currentProfileLayout"
             app:layout_constraintEnd_toStartOf="@id/profileName"
-            app:layout_constraintBottom_toBottomOf="@id/currentProfileLayout"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/currentProfileLayout" />
 
         <EditText
             android:id="@+id/profileName"
@@ -30,10 +31,10 @@
             android:ems="10"
             android:inputType="text"
             android:text="Name"
-            app:layout_constraintStart_toEndOf="@id/currentAvatar"
+            app:layout_constraintBottom_toBottomOf="@id/currentProfileLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/currentProfileLayout"
-            app:layout_constraintBottom_toBottomOf="@id/currentProfileLayout"/>
+            app:layout_constraintStart_toEndOf="@id/currentAvatar"
+            app:layout_constraintTop_toTopOf="@id/currentProfileLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -102,4 +103,13 @@
             app:layout_constraintEnd_toEndOf="@id/avatarLayout"
             app:layout_constraintBottom_toBottomOf="@id/avatarLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:backgroundTint="@color/blue"
+        android:text="Save Changes"
+        android:textColor="@color/black"></Button>
 </LinearLayout>

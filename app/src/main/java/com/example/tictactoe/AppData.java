@@ -11,13 +11,20 @@ public class AppData extends ViewModel {
 
     //Settings Menu Data
     public static MutableLiveData<ArrayList> players;
+    public static MutableLiveData<Profile> currentEditProfile;
 
     //Initialise to defaults
     public AppData() {
+
         menuClicked = new MediatorLiveData<Integer>();
         menuClicked.setValue(0);
         players = new MutableLiveData<ArrayList>();
         players.setValue(new ArrayList<Profile>());
+        addPlayer(new Profile(getProfileCount()+1,R.drawable.cross,"Player1"));
+        addPlayer(new Profile(getProfileCount()+1,R.drawable.naught,"Player2"));
+        currentEditProfile = new MutableLiveData<Profile>();
+        currentEditProfile.setValue(getProfile(1));
+
     }
 
     //Getters and setters
@@ -36,6 +43,10 @@ public class AppData extends ViewModel {
     public static int getProfileCount() {return players.getValue().size();}
 
     public Profile getProfile(int ID) {return (Profile)players.getValue().get(ID);}
+
+    public void setCurrentEditProfile(Profile profile) {currentEditProfile.setValue(profile);}
+
+    public Profile getCurrentEditProfile() {return currentEditProfile.getValue(); }
 
     public boolean playersIsEmpty() {
         boolean result = false;

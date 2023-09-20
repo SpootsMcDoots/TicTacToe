@@ -18,12 +18,11 @@ public class profileAdapter extends RecyclerView.Adapter<profileVH>{
     Context context;
     //create recycle view class for profile adapter
     List<Profile> profile;
+    AppData mainActivityDVM;
     public profileAdapter(Context context, ArrayList<Profile> profile,AppData newMainActivityDVM){
-        AppData mainActivityDVM;
         this.context = context;
         this.profile = profile;
-        mainActivityDVM = newMainActivityDVM;;
-        Log.d("tag",profile.get(0).getUsername());
+        mainActivityDVM = newMainActivityDVM;
         }
         @NonNull
         @Override
@@ -40,11 +39,8 @@ public class profileAdapter extends RecyclerView.Adapter<profileVH>{
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 mainActivityDVM.setMenuClicked(5);
-                Toast.makeText(view.getContext(), "Calling "+ sdata.getUsername(),
-                        Toast.LENGTH_SHORT).show();
-                Log.d("Values", sdata.getUsername());
+                mainActivityDVM.setCurrentEditProfile(sdata);
             }
         });
 
