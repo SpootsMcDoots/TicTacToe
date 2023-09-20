@@ -1,5 +1,6 @@
 package com.example.tictactoe;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -63,6 +64,7 @@ public class BoardFragment extends Fragment {
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
 
         Button back = rootView.findViewById(R.id.backButton);
+        Button reset = rootView.findViewById(R.id.resetButton);
         Chronometer timer = rootView.findViewById(R.id.timer);
         TextView playerIndicator = rootView.findViewById(R.id.tv_current_player);
         ImageView playerAvatar = rootView.findViewById(R.id.avatar_current_player);
@@ -80,7 +82,7 @@ public class BoardFragment extends Fragment {
 
         gameDVM.newGame();
 	    timer.start();
-        cTimer = startTimer();
+        cTimer = startTimer(mainActivityDVM, gameDVM);
         cTimer.start();
         CountDownTimer finalCTimer = cTimer;
         gameDVM.turnPlayer.observe(getActivity(), new Observer<Profile>() {
@@ -98,18 +100,27 @@ public class BoardFragment extends Fragment {
                adapter.resetBoard();
                mainActivityDVM.setMenuClicked(0);
             }
-
        });
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adapter.resetBoard();
+                BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard(), mainActivityDVM, gameDVM);
+                rv.setAdapter(adapter);
+                timer.start();
+                finalCTimer.cancel();
+                finalCTimer.start();
+            }
+        });
 
         return rootView;
     }
 
-
     //start timer function
-    private CountDownTimer startTimer() {
+    private CountDownTimer startTimer(AppData appData, GameData gameDVM) {
         //Countdown timer
         TextView countdown = rootView.findViewById(R.id.countdown);
-        long duration = TimeUnit.MINUTES.toMillis(1);
+        long duration = TimeUnit.SECONDS.toMillis(10);
         CountDownTimer cTimer = new CountDownTimer(duration, 1000) {
             @Override
             public void onTick(long ll) {
@@ -124,11 +135,13 @@ public class BoardFragment extends Fragment {
             }
             @Override
             public void onFinish() {
-                //TODO: Toast is for small pop up info, use this for win/draw/invalid notifications
-                Toast.makeText(getActivity(), "Turn has ended.", Toast.LENGTH_LONG).show();
+                gameDVM.endTurn();
+                appData.setMenuClicked(6);
             }
         };
         return cTimer;
     }
+
+
 
 }

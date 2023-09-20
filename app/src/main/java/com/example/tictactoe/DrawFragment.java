@@ -1,12 +1,6 @@
 package com.example.tictactoe;
 
-import android.media.Image;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +8,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SettingsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WinFragment extends Fragment {
+public class DrawFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +27,7 @@ public class WinFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public WinFragment() {
+    public DrawFragment() {
         // Required empty public constructor
     }
 
@@ -65,24 +62,18 @@ public class WinFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_win, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_draw, container, false);
         AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
         GameData gameDVM = new ViewModelProvider(getActivity()).get(GameData.class);
 
         Button back = rootView.findViewById(R.id.back);
-        ImageView avatar = rootView.findViewById(R.id.avatar);
+
         TextView msg = rootView.findViewById(R.id.message);
 
-        avatar.setImageResource(gameDVM.getTurnPlayer().getAvatarId());
-        msg.setText(gameDVM.getTurnPlayer().getUsername() + "Wins!");
-        if(gameDVM.getTurnPlayer() == gameDVM.getPlayer1()) {
-            gameDVM.getPlayer1().win_match();
-            gameDVM.getPlayer2().lost_match();
-        }
-        else{
-            gameDVM.getPlayer2().win_match();
-            gameDVM.getPlayer1().lost_match();
-        }
+        msg.setText("Draw!");
+
+        gameDVM.getPlayer1().draw_match();
+        gameDVM.getPlayer2().draw_match();
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

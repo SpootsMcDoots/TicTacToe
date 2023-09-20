@@ -49,6 +49,10 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardCellVH> {
                 }
                 else {
                     gameDVM.endTurn();
+                    if(gameDVM.checkDraw()){
+                        resetBoard();
+                        mainActivityDVM.setMenuClicked(7);
+                    }
                 }
 
             }
