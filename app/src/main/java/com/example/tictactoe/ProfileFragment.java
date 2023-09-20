@@ -69,8 +69,8 @@ public class ProfileFragment extends Fragment {
 
         RecyclerView rv = view.findViewById(R.id.profileRecycleView);
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false));
-        profileAdapter pAdapter = new profileAdapter(getActivity(), mainActivityDVM.getPlayers().getValue());
+        profileAdapter pAdapter = new profileAdapter(getActivity(), mainActivityDVM.getPlayers());
         rv.setAdapter(pAdapter);
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return view;
     }
 }

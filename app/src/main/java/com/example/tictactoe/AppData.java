@@ -28,7 +28,7 @@ public class AppData extends ViewModel {
         menuClicked.setValue(value);
     }
 
-    public MutableLiveData<ArrayList> getPlayers() { return players;}
+    public ArrayList<Profile> getPlayers() { return players.getValue();}
 
     //store the array from the profile
     public static void addPlayer(Profile player) {players.getValue().add(player); }

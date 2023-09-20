@@ -21,19 +21,18 @@ public class profileAdapter extends RecyclerView.Adapter<profileVH>{
     public profileAdapter(Context context, ArrayList<Profile> profile){
         this.context = context;
         this.profile = profile;
+        Log.d("tag",profile.get(0).getUsername());
         }
         @NonNull
         @Override
         public profileVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
             View view = layoutInflater.inflate(R.layout.profile_list_element,parent,false);
-            profileVH profileViewHolder = new profileVH(view,parent);
+            profileVH profileViewHolder = new profileVH(view,parent,profile.size());
             return profileViewHolder;
         }
     @Override
     public void onBindViewHolder(@NonNull profileVH holder, int position) {
-        //TODO
-        //AppData mainAcitityDVM = new ViewModelProvider()
         Profile sdata = profile.get(position);
         holder.textView.setText(sdata.getUsername());
         holder.button.setOnClickListener(new View.OnClickListener() {

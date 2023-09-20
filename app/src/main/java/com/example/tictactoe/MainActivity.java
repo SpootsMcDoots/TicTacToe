@@ -17,13 +17,6 @@ public class MainActivity extends AppCompatActivity {
     //Testing below
     List<Profile> profiles;
     public MainActivity(){
-        //TESTING
-        profiles = new ArrayList<Profile>();
-
-        profiles.add(new Profile("a"));
-        profiles.add(new Profile("b"));
-        profiles.add(new Profile("c"));
-        profiles.add(new Profile("d"));
 
     }
     public MenuFragment menuFragment = new MenuFragment();

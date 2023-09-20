@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class profileVH extends RecyclerView.ViewHolder {
     public TextView textView;
     public Button button;
-    public profileVH(@NonNull View itemView, ViewGroup parent) {
+    public profileVH(@NonNull View itemView, ViewGroup parent,int size) {
         super(itemView);
         textView = itemView.findViewById(R.id.textView);
         button = itemView.findViewById(R.id.editbutton);
-        int hSize = parent.getMeasuredHeight() /3;
+        int hSize = parent.getMeasuredHeight() /size;
         ViewGroup.LayoutParams lp = itemView.getLayoutParams();
         lp.height = hSize;
         //lp.width = wSize;
