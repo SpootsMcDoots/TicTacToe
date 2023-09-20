@@ -95,8 +95,10 @@ public class BoardFragment extends Fragment {
        back.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               adapter.resetBoard();
                mainActivityDVM.setMenuClicked(0);
             }
+
        });
 
         return rootView;

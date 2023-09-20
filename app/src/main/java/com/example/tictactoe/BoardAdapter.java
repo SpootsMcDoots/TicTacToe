@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Arrays;
@@ -41,11 +43,19 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardCellVH> {
             @Override
             public void onClick(View view) {
                 holder.boardButton.setImageResource(gameDVM.getTurnPlayer().getAvatarId());
-                data.setBoardCell(position / data.getSize(),position % data.getSize(), gameDVM.getTurnPlayer().getProfileID());
-                Log.d("TAG", (Arrays.deepToString(data.getBoard())));
-                gameDVM.endTurn();
+                if(data.setBoardCell(position / data.getSize(),position % data.getSize(), gameDVM.getTurnPlayer().getProfileID())) {
+                    resetBoard();
+                    mainActivityDVM.setMenuClicked(6);
+                }
+                else {
+                    gameDVM.endTurn();
+                }
+
             }
         });
+    }
+    public void resetBoard() {
+        data.reset();
     }
 
     @Override

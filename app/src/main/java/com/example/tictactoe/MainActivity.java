@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     public ProfileFragment profileFragment= new ProfileFragment();
     public editprofile editprofileFragment = new editprofile();
     public LeaderboardFragment leaderboardFragment = new LeaderboardFragment();
+    public WinFragment winFragment = new WinFragment();
 	
     public FragmentManager fm = getSupportFragmentManager();
 
@@ -65,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
 				
                 if (mainActivityDVM.getMenuClicked() == 5){
                     loadeditprofileFragment();
+                }
+                if (mainActivityDVM.getMenuClicked() == 6){
+                    loadWinFragment();
                 }
             }
         });
@@ -127,6 +131,15 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             fm.beginTransaction().replace(R.id.menus_container, leaderboardFragment).commit();
+        }
+    }
+    private void loadWinFragment() {
+        Fragment frag = fm.findFragmentById(R.id.menus_container);
+        if(frag == null) {
+            fm.beginTransaction().add(R.id.menus_container, winFragment).commit();
+        }
+        else{
+            fm.beginTransaction().replace(R.id.menus_container, winFragment).commit();
         }
     }
 }
