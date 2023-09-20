@@ -66,6 +66,7 @@ public class BoardFragment extends Fragment {
         Chronometer timer = rootView.findViewById(R.id.timer);
         TextView playerIndicator = rootView.findViewById(R.id.tv_current_player);
         ImageView playerAvatar = rootView.findViewById(R.id.avatar_current_player);
+        CountDownTimer cTimer = null;
 
         RecyclerView rv = rootView.findViewById(R.id.boardRecyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), gameDVM.getBoardSize(), GridLayoutManager.VERTICAL, false);
@@ -83,13 +84,17 @@ public class BoardFragment extends Fragment {
             gameDVM.setPlayer2(mainActivityDVM.getProfile(1));
             Log.d("TAG", Integer.toString(gameDVM.getPlayer1().getProfileID()) + Integer.toString(gameDVM.getPlayer2().getProfileID()));
        }
-       gameDVM.newGame();
-	   timer.start();
-
+        gameDVM.newGame();
+	    timer.start();
+        cTimer = startTimer();
+        cTimer.start();
+        CountDownTimer finalCTimer = cTimer;
         gameDVM.turnPlayer.observe(getActivity(), new Observer<Profile>() {
             public void onChanged(Profile currentPlayer) {
+                finalCTimer.cancel();
                 playerIndicator.setText(gameDVM.turnPlayer.getValue().getUsername());
                 playerAvatar.setImageResource(gameDVM.turnPlayer.getValue().getAvatarId());
+                finalCTimer.start();
             }
         });
 
@@ -105,12 +110,11 @@ public class BoardFragment extends Fragment {
 
 
     //start timer function
-    void startTimer() {
-        CountDownTimer cTimer = null;
+    private CountDownTimer startTimer() {
         //Countdown timer
         TextView countdown = rootView.findViewById(R.id.countdown);
         long duration = TimeUnit.MINUTES.toMillis(1);
-        cTimer = new CountDownTimer(duration, 1000) {
+        CountDownTimer cTimer = new CountDownTimer(duration, 1000) {
             @Override
             public void onTick(long ll) {
                 //Converting milliseconds to minutes and seconds
@@ -128,7 +132,7 @@ public class BoardFragment extends Fragment {
                 Toast.makeText(getActivity(), "Turn has ended.", Toast.LENGTH_LONG).show();
             }
         };
-        cTimer.start();
+        return cTimer;
     }
 
 }
