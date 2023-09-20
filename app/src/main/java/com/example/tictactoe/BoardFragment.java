@@ -63,17 +63,14 @@ public class BoardFragment extends Fragment {
         BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard());
         rv.setAdapter(adapter);
 
+        Log.d("TAG", Integer.toString(mainActivityDVM.getProfileCount()));
         if(mainActivityDVM.playersIsEmpty()) {
-            Profile p1 = new Profile(1,"Player1");
-            Profile p2 = new Profile(2,"Player2");
-            Log.d("TAG", p1.getUsername());
-            Log.d("TAG", p2.getUsername());
-            mainActivityDVM.addPlayer(p1);
-            mainActivityDVM.addPlayer(p2);
+            mainActivityDVM.addPlayer(new Profile(mainActivityDVM.getProfileCount(),1,"Player1"));
+            mainActivityDVM.addPlayer(new Profile(mainActivityDVM.getProfileCount(),2,"Player2"));
+            Log.d("TAG", mainActivityDVM.getProfile(0).getUsername());
+            Log.d("TAG", mainActivityDVM.getProfile(1).getUsername());
             gameDVM.setPlayer1(mainActivityDVM.getProfile(0));
-            Log.d("TAG", gameDVM.getPlayer1().getUsername());
             gameDVM.setPlayer2(mainActivityDVM.getProfile(1));
-            Log.d("TAG", gameDVM.getPlayer2().getUsername());
             Log.d("TAG", Integer.toString(gameDVM.getPlayer1().getProfileID()) + Integer.toString(gameDVM.getPlayer2().getProfileID()));
        }
        gameDVM.newGame();

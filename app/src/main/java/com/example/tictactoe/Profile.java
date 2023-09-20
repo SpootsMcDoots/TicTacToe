@@ -14,19 +14,15 @@ public class Profile {
     private int loseCount = 0;
     private int draw = 0;
     private int avatarId = 0;
-    AppData mainActivityDVM = new AppData();
 
 
-    public Profile(int newAvatarId, String newUsername) {
+    public Profile(int newProfileID, int newAvatarId, String newUsername) {
+        setProfileID(newProfileID);
         setAvatarId(newAvatarId);
         setUsername(newUsername);
-        setProfileID();
     }
     public int getProfileID() {return profileID;}
-    public void setProfileID() {
-
-        Log.d("TAG",Integer.toString(mainActivityDVM.getProfileCount()) );
-        profileID = mainActivityDVM.getProfileCount();}
+    public void setProfileID(int newProfileID) { profileID = newProfileID;}
     public int getAvatarId() {return avatarId;}
     public void setAvatarId (int newDrawableId) {avatarId = newDrawableId;}
     public String getUsername () {return username;}
