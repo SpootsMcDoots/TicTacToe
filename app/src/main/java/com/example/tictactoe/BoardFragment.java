@@ -68,6 +68,7 @@ public class BoardFragment extends Fragment {
            gameDVM.setPlayer2(new Profile(R.drawable.naught, "Player 2"));
            mainActivityDVM.players.getValue().add(gameDVM.getPlayer1());
            mainActivityDVM.players.getValue().add(gameDVM.getPlayer2());
+           Log.d("TAG", Integer.toString(gameDVM.getPlayer1().getProfileID()) + Integer.toString(gameDVM.getPlayer2().getProfileID()));
        }
        gameDVM.newGame();
 

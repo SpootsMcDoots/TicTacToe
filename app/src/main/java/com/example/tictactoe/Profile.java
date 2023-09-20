@@ -12,7 +12,6 @@ public class Profile {
     private int loseCount = 0;
     private int draw = 0;
     private int avatarId = 0;
-    private AppData mainActivityDVM = new ViewModelProvider().get(AppData.class);
 
 
     public Profile(int newAvatarId, String newUsername) {
@@ -21,7 +20,9 @@ public class Profile {
         setProfileID();
     }
     public int getProfileID() {return profileID;}
-    public void setProfileID() {profileID = appData.getProfileCount();}
+    public void setProfileID() {
+        AppData mainActivityDVM = new AppData();
+        profileID = mainActivityDVM.getProfileCount();}
     public int getAvatarId() {return avatarId;}
     public void setAvatarId (int newDrawableId) {avatarId = newDrawableId;}
     public String getUsername () {return username;}
