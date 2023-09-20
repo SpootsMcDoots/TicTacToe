@@ -84,9 +84,7 @@ public class BoardFragment extends Fragment {
 
         gameDVM.newGame();
 	    timer.start();
-        cTimer = startTimer(mainActivityDVM, gameDVM);
-        cTimer.start();
-        CountDownTimer finalCTimer = cTimer;
+        CountDownTimer finalCTimer = startTimer(mainActivityDVM, gameDVM);
         gameDVM.turnPlayer.observe(getActivity(), new Observer<Profile>() {
             public void onChanged(Profile currentPlayer) {
                 finalCTimer.cancel();
@@ -100,10 +98,10 @@ public class BoardFragment extends Fragment {
            @Override
            public void onClick(View view) {
                adapter.resetBoard();
-               finalCTimer.cancel();
                BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard(), mainActivityDVM, gameDVM);
                rv.setAdapter(adapter);
                mainActivityDVM.setMenuClicked(0);
+               finalCTimer.cancel();
             }
        });
         reset.setOnClickListener(new View.OnClickListener() {
@@ -140,9 +138,9 @@ public class BoardFragment extends Fragment {
             }
             @Override
             public void onFinish() {
+                cancel();
                 gameDVM.endTurn();
                 appData.setMenuClicked(6);
-                cancel();
             }
         };
         return cTimer;
