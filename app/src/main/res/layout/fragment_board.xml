@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
-        android:layout_margin="64dp">
+        android:layout_margin="36dp">
 
         <TextView
             android:id="@+id/tv_current_player"
@@ -25,11 +25,23 @@
             android:layout_height="wrap_content"
 
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/timer"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
 
             android:text="Current Player">
+        </TextView>
+
+        <TextView
+            android:id="@+id/total_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toBottomOf="@+id/tv_current_player"
+            app:layout_constraintBottom_toTopOf="@+id/countdown_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/timer"
+
+            android:text="Total Time:">
         </TextView>
 
         <Chronometer
@@ -38,12 +50,38 @@
             android:layout_height="wrap_content"
 
             app:layout_constraintTop_toBottomOf="@id/tv_current_player"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/countdown"
+            app:layout_constraintStart_toEndOf="@+id/total_time"
             app:layout_constraintEnd_toEndOf="parent"
 
             android:text="Timer">
         </Chronometer>
+
+        <TextView
+            android:id="@+id/countdown_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toBottomOf="@+id/total_time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/timer"
+
+            android:text="Turn Time Left:">
+        </TextView>
+
+        <TextView
+            android:id="@+id/countdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toBottomOf="@+id/timer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/countdown_label"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            android:text="0">
+        </TextView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
