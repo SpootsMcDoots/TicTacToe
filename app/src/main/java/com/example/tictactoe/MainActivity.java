@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public SettingsFragment settingsFragment = new SettingsFragment();
     public BoardFragment boardFragment = new BoardFragment();
     public ProfileFragment profileFragment= new ProfileFragment();
+    public LeaderboardFragment leaderboardFragment = new LeaderboardFragment();
 
     public FragmentManager fm = getSupportFragmentManager();
 
@@ -56,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 if (mainActivityDVM.getMenuClicked() == 3){
                     loadProfileFragment();
                 }
-//                if (mainActivityDVM.getMenuClicked() == 4){
-//                    loadProfileFragment();
-//                }
+                if (mainActivityDVM.getMenuClicked() == 4){
+                    loadLeaderboardFragment();
+                }
 
             }
         });
@@ -100,6 +101,15 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             fm.beginTransaction().replace(R.id.menus_container, profileFragment).commit();
+        }
+    }
+    private void loadLeaderboardFragment() {
+        Fragment frag = fm.findFragmentById(R.id.menus_container);
+        if(frag == null) {
+            fm.beginTransaction().add(R.id.menus_container, leaderboardFragment).commit();
+        }
+        else{
+            fm.beginTransaction().replace(R.id.menus_container, leaderboardFragment).commit();
         }
     }
 }
