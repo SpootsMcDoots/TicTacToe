@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     public BoardFragment boardFragment = new BoardFragment();
     public ProfileFragment profileFragment= new ProfileFragment();
     public editprofile editprofileFragment = new editprofile();
+    public LeaderboardFragment leaderboardFragment = new LeaderboardFragment();
+	
     public FragmentManager fm = getSupportFragmentManager();
 
     @Override
@@ -56,14 +58,14 @@ public class MainActivity extends AppCompatActivity {
                 if (mainActivityDVM.getMenuClicked() == 3){
                     loadProfileFragment();
                 }
-//                if (mainActivityDVM.getMenuClicked() == 4){
-//                    loadProfileFragment();
-//                }
+
+                if (mainActivityDVM.getMenuClicked() == 4){
+                    loadLeaderboardFragment();
+                }
+				
                 if (mainActivityDVM.getMenuClicked() == 5){
                     loadeditprofileFragment();
                 }
-
-
             }
         });
     }
@@ -107,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
             fm.beginTransaction().replace(R.id.menus_container, profileFragment).commit();
         }
     }
+	
     private void loadeditprofileFragment() {
         Fragment frag = fm.findFragmentById(R.id.menus_container);
         if(frag == null) {
@@ -117,4 +120,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void loadLeaderboardFragment() {
+        Fragment frag = fm.findFragmentById(R.id.menus_container);
+        if(frag == null) {
+            fm.beginTransaction().add(R.id.menus_container, leaderboardFragment).commit();
+        }
+        else{
+            fm.beginTransaction().replace(R.id.menus_container, leaderboardFragment).commit();
+        }
+    }
 }

@@ -3,17 +3,21 @@ package com.example.tictactoe;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link leaderboard#newInstance} factory method to
+ * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class leaderboard extends Fragment {
+public class LeaderboardFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +28,7 @@ public class leaderboard extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public leaderboard() {
+    public LeaderboardFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +38,11 @@ public class leaderboard extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment leaderboard.
+     * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static leaderboard newInstance(String param1, String param2) {
-        leaderboard fragment = new leaderboard();
+    public static LeaderboardFragment newInstance(String param1, String param2) {
+        LeaderboardFragment fragment = new LeaderboardFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -52,13 +56,30 @@ public class leaderboard extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_leaderboard, container, false);
+        AppData mainActivityDVM = new ViewModelProvider(getActivity()).get(AppData.class);
+        View view = inflater.inflate(R.layout.fragment_leaderboard, container, false);
+        Button back = view.findViewById(R.id.backButton);
+        RecyclerView rv = view.findViewById(R.id.leaderboardRecyclerView);
+        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        LeaderboardAdapter adapter = new LeaderboardAdapter(getActivity(), mainActivityDVM.getPlayers());
+        rv.setAdapter(adapter);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivityDVM.setMenuClicked(0);
+            }
+        });
+
+        return view;
     }
+
+
 }
