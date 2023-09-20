@@ -99,7 +99,6 @@ public class BoardFragment extends Fragment {
        back.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               finalCTimer.cancel();
                adapter.resetBoard();
                finalCTimer.cancel();
                BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard(), mainActivityDVM, gameDVM);
