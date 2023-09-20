@@ -1,5 +1,7 @@
 package com.example.tictactoe;
 
+import android.util.Log;
+
 import androidx.lifecycle.ViewModelProvider;
 
 /**
@@ -12,6 +14,7 @@ public class Profile {
     private int loseCount = 0;
     private int draw = 0;
     private int avatarId = 0;
+    AppData mainActivityDVM = new AppData();
 
 
     public Profile(int newAvatarId, String newUsername) {
@@ -21,7 +24,8 @@ public class Profile {
     }
     public int getProfileID() {return profileID;}
     public void setProfileID() {
-        AppData mainActivityDVM = new AppData();
+
+        Log.d("TAG",Integer.toString(mainActivityDVM.getProfileCount()) );
         profileID = mainActivityDVM.getProfileCount();}
     public int getAvatarId() {return avatarId;}
     public void setAvatarId (int newDrawableId) {avatarId = newDrawableId;}
