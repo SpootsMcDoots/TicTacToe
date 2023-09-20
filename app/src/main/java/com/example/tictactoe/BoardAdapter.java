@@ -23,6 +23,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardCellVH> {
         data = newData;
         mainActivityDVM = newMainActivityDVM;
         gameDVM = newGameDVM;
+        resetBoard();
     }
 
     @NonNull
@@ -44,7 +45,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardCellVH> {
             public void onClick(View view) {
                 holder.boardButton.setImageResource(gameDVM.getTurnPlayer().getAvatarId());
                 if(data.setBoardCell(position / data.getSize(),position % data.getSize(), gameDVM.getTurnPlayer().getProfileID())) {
-                    resetBoard();
                     mainActivityDVM.setMenuClicked(6);
                 }
                 else {
@@ -60,6 +60,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardCellVH> {
 
     }
     public void resetBoard() {
+        gameDVM.newGame();
         data.reset();
     }
 

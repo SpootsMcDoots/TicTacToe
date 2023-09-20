@@ -86,6 +86,7 @@ public class WinFragment extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                gameDVM.newGame();
                 mainActivityDVM.setMenuClicked(1);
             }
         });

@@ -88,6 +88,49 @@ public class editprofile extends Fragment {
                 mainActivityDVM.setMenuClicked(3);
             }
         });
+        avatar1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentAvatar.setImageResource(R.drawable.cross);
+                target.setAvatarId(R.drawable.cross);
+            }
+        });
+        avatar2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentAvatar.setImageResource(R.drawable.naught);
+                target.setAvatarId(R.drawable.naught);
+            }
+        });
+        avatar3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentAvatar.setImageResource(R.drawable.scissors);
+                target.setAvatarId(R.drawable.scissors);
+            }
+        });
+        avatar4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentAvatar.setImageResource(R.drawable.battler);
+                target.setAvatarId(R.drawable.battler);
+            }
+        });
+        avatar5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentAvatar.setImageResource(R.drawable.gabumon);
+                target.setAvatarId(R.drawable.gabumon);
+            }
+        });
+        avatar6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentAvatar.setImageResource(R.drawable.download);
+                target.setAvatarId(R.drawable.download);
+            }
+        });
+
         return view;
     }
 }

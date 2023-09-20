@@ -101,6 +101,9 @@ public class BoardFragment extends Fragment {
            public void onClick(View view) {
                finalCTimer.cancel();
                adapter.resetBoard();
+               finalCTimer.cancel();
+               BoardAdapter adapter = new BoardAdapter(gameDVM.getBoard(), mainActivityDVM, gameDVM);
+               rv.setAdapter(adapter);
                mainActivityDVM.setMenuClicked(0);
             }
        });

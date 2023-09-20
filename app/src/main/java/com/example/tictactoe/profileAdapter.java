@@ -20,13 +20,11 @@ public class profileAdapter extends RecyclerView.Adapter<profileVH>{
     List<Profile> profile;
     AppData mainActivityDVM;
     GameData gameDVM;
-    int currentSelection;
     public profileAdapter(Context context, ArrayList<Profile> profile,AppData newMainActivityDVM, GameData newGameDVM){
         this.context = context;
         this.profile = profile;
         mainActivityDVM = newMainActivityDVM;
         gameDVM = newGameDVM;
-        this.currentSelection = 1;
         }
         @NonNull
         @Override
@@ -56,7 +54,7 @@ public class profileAdapter extends RecyclerView.Adapter<profileVH>{
         holder.select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentSelection%2 == 0) {
+                if(mainActivityDVM.toggleProfileSelect()) {
                     gameDVM.setPlayer1(sdata);
                 }
                 else {
